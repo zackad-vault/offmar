@@ -14,9 +14,10 @@ $(document).ready(function(){
     
 	gvar.style = ''
 		+'<style type="text/css">'
-		+'a {color:blue; font-weight:bold; text-decoration:none}'
-		+'a.current {color:red;}'
+		+'.location-container a {color:blue; font-weight:bold; text-decoration:none}'
+		+'.location-container a.current {color:red;}'
         +'img {max-width:90%!important; max-height:900px!important;}'
+        +'body {max-width:100%!important;}'
 		+'</style>'
 		;
 	var container = ''
@@ -74,11 +75,11 @@ $(document).ready(function(){
         for (var i=3; i < loc.current.length-1; i++){
             loc.temp += loc.current[i]+ '/';
             if (i == loc.i-2){
-                loc.a = '<a href="file:///' + loc.temp + '" class="current">' + loc.current[i] +' || </a>';
+                loc.a = '<a href="file:///' + loc.temp + '" class="current">' + loc.current[i] +' / </a>';
                 //title
                 $('head').append('<title>'+loc.current[i]+'</title>');
             } else {
-                loc.a = '<a href="file:///' + loc.temp + '">' + loc.current[i] +' || </a>';
+                loc.a = '<a href="file:///' + loc.temp + '">' + loc.current[i] +' / </a>';
             }
             clog(loc.a);
             $('.location-container').append(loc.a);
@@ -100,6 +101,7 @@ $(document).ready(function(){
 	function init(){
 		var temp = $('body').children();
 		//$('body').children().remove();
+		$('head').append(gvar.style);
         $('body').prepend(container);
 		$('body').prepend(loc_wrp);
         $('.container-container').append(controler);
@@ -113,7 +115,7 @@ $(document).ready(function(){
 	}
     init();
     getLoc();
-    $('#disable').click(function(){disable()});
+    $('#disable').click(disable);
     $('#enable').click(lets_roll);
     
     /* Hotkey */
@@ -127,7 +129,7 @@ $(document).ready(function(){
     if(keyCode == 13 ){
         lets_roll();
     }
-        // caseof : \ 'backslash'
+	// caseof : \ 'backslash'
     if(keyCode == 220){
         if(img.length == 0) return;
         window.location.reload();

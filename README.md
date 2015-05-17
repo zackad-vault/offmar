@@ -5,5 +5,4 @@ Userscript for reading manga/view image locally in strip way.
 **Enter** : read current folder  
 **\** (backslash) : view file list
 
-## Known Issue
-~~**NOT** yet work on Firefox.~~
+> Experimental mode in Firefox browser.
