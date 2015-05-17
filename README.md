@@ -1,9 +1,9 @@
 # Manga Reader Offline
-userscript for reading manga/view image locally in strip way.
+Userscript for reading manga/view image locally in strip way.
 
 ## Hotkey
-Enter : read current folder
-\     : view file list
+**Enter** : read current folder  
+**\** (backslash) : view file list
 
 ## Known Issue
 **NOT** yet work on Firefox.
