@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.3
+// @version        0.2.4
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @copyright      2015 zackad
@@ -74,15 +74,17 @@ $(document).ready(function(){
         for (var i=3; i < loc.current.length-1; i++){
             loc.temp += loc.current[i]+ '/';
             if (i == loc.i-2){
-                loc.a = '<a href="' + loc.temp + '" class="current">' + loc.current[i] +' || </a>';
+                loc.a = '<a href="file:///' + loc.temp + '" class="current">' + loc.current[i] +' || </a>';
+                //title
+                $('head').append('<title>'+loc.current[i]+'</title>');
             } else {
-                loc.a = '<a href="' + loc.temp + '">' + loc.current[i] +' || </a>';
+                loc.a = '<a href="file:///' + loc.temp + '">' + loc.current[i] +' || </a>';
             }
             clog(loc.a);
             $('.location-container').append(loc.a);
             clog(loc.temp);
         }
-        $('.location-container').append(controler);
+        //$('.location-container').append(controler);
     }
     function clog(x){
         if(!gvar.__DEBUG__) return;
@@ -125,7 +127,9 @@ $(document).ready(function(){
     if(keyCode == 13 ){
         lets_roll();
     }
+        // caseof : \ 'backslash'
     if(keyCode == 220){
+        if(img.length == 0) return;
         window.location.reload();
     }
 }, true);

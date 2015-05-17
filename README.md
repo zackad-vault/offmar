@@ -6,4 +6,4 @@ Userscript for reading manga/view image locally in strip way.
 **\** (backslash) : view file list
 
 ## Known Issue
-**NOT** yet work on Firefox.
+~~**NOT** yet work on Firefox.~~
