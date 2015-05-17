@@ -103,7 +103,8 @@ $(document).ready(function(){
         $('.container-container').append(controler);
 	}
     function lets_roll(){
-		init();
+		if (img.length == 0) return;
+        init();
 		enable();
         getLoc();
         $('#enable').hide();
