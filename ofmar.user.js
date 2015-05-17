@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.2
+// @version        0.2.3
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @copyright      2015 zackad
@@ -10,12 +10,13 @@
 // ==/UserScript==
 $(document).ready(function(){
     var gvar = function(){};
-    gvar.__DEBUG__ = 1;     //DEBUG MODE
+    gvar.__DEBUG__ = 0;     //DEBUG MODE
     
 	gvar.style = ''
 		+'<style type="text/css">'
 		+'a {color:blue; font-weight:bold; text-decoration:none}'
 		+'a.current {color:red;}'
+        +'img {max-width:90%!important; max-height:900px!important;}'
 		+'</style>'
 		;
 	var container = ''
@@ -23,7 +24,7 @@ $(document).ready(function(){
 		+'<center></center>'
 		+'</div>'
 		;
-	var location = ''
+	var loc_wrp = ''
 		+'<div class="location-container" style="background-color:#999; padding:5px 10px; font-size:24px;">'
 		+'</div>'
 		;
@@ -50,8 +51,8 @@ $(document).ready(function(){
 			$('head').children().remove();
 			$('head').append(gvar.style);
 			$('body').append(container)
-				.append(location)
-				.prepend(location)
+				.append(loc_wrp)
+				.prepend(loc_wrp)
 				.css('background-color','black');
 			//$('.location-container').append('controler');
 		}
@@ -98,17 +99,34 @@ $(document).ready(function(){
 		var temp = $('body').children();
 		//$('body').children().remove();
         $('body').prepend(container);
-		$('body').prepend(location);
+		$('body').prepend(loc_wrp);
         $('.container-container').append(controler);
 	}
-    init();
-    getLoc();
-    $('#disable').click(function(){disable()});
-    $('#enable').click(function(){
+    function lets_roll(){
 		init();
 		enable();
         getLoc();
         $('#enable').hide();
-		});
+	}
+    init();
+    getLoc();
+    $('#disable').click(function(){disable()});
+    $('#enable').click(lets_roll);
+    
+    /* Hotkey */
+    window.addEventListener('keydown', function(e) {
+    var keyCode = e.keyCode;
+    var CSA = [e.ctrlKey, e.shiftKey, e.altKey];
+    //console.log(keyCode);
+    //console.log(String(CSA) + '; '+keyCode);
+    
+    // caseof : Enter
+    if(keyCode == 13 ){
+        lets_roll();
+    }
+    if(keyCode == 220){
+        window.location.reload();
+    }
+}, true);
 }
 );
