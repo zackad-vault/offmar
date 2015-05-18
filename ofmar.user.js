@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.3
+// @version        0.2.4
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @copyright      2015 zackad
@@ -14,19 +14,21 @@ $(document).ready(function(){
     
 	gvar.style = ''
 		+'<style type="text/css">'
-		+'.location-container a {color:blue; font-weight:bold; text-decoration:none}'
+        +'.location-container {background-color:#ddd; padding:5px 10px; font-size:20px; border-radius:10px;}'
+		+'.location-container a {color:blue; font-weight:bold; text-decoration:none;}'
 		+'.location-container a.current {color:red;}'
-        +'img {max-width:90%!important; max-height:1000px!important;}'
+        +'img {max-width:95%!important; max-height:1000px!important;}'
         +'body {max-width:100%!important;}'
+        +'#container {padding:0px; margin:0px; background-color:black;}'
 		+'</style>'
 		;
 	var container = ''
-		+'<div id="container" style="background-color:black; float:center; padding:0px; margin:0px;">'
+		+'<div id="container">'
 		+'<center></center>'
 		+'</div>'
 		;
 	var loc_wrp = ''
-		+'<div class="location-container" style="background-color:#999; padding:5px 10px; font-size:24px;">'
+		+'<div class="location-container">'
 		+'</div>'
 		;
 	var imgSelector = ''
@@ -104,10 +106,11 @@ $(document).ready(function(){
 		$('head').append(gvar.style);
         $('body').prepend(container);
 		$('body').prepend(loc_wrp);
-        $('.container-container').append(controler);
-		/* var fLink = $('table a');
-		fLink.href.sort(naturalSort);
-		clog(fLink.href); */
+		$('h1, .up').remove();
+//      $('.container-container').append(controler);
+//		var fLink = $('table a').attr('href');
+//		fLink.sort(naturalSort);
+//		clog(fLink);
 	}
     function lets_roll(){
 		if (img.length == 0) return;
