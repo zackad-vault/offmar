@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.5
+// @version        0.2.6
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -18,7 +18,7 @@
 // ==/UserScript==
 $(document).ready(function(){
     var gvar = function(){};
-    gvar.__DEBUG__ = 1;     //DEBUG MODE
+    gvar.__DEBUG__ = 0;     //DEBUG MODE
     
 	gvar.style = ''
 		+'<style type="text/css">'
@@ -112,11 +112,11 @@ $(document).ready(function(){
         resize();
 	}
 	function fit_width(){
-	   $('img').css('max-width','100%').css('max-height','100%');
-	   clog('full_size');
+	   $('img').css('max-width','100%').css('max-height','1000%');
+	   clog('fit width');
 	}
 	function full_size(){
-	   $('img').css('max-width','1000%').css('max-height','100%');
+	   $('img').css('max-width','1000%').css('max-height','10000%');
 	   clog('full_size');
 	}
 	function resize(){
@@ -125,7 +125,7 @@ $(document).ready(function(){
         if($(this).attr('style')){
             $(this).removeAttr('style');
         }else {
-            $(this).css('max-width','1000%').css('max-height','100%');
+            $(this).css('max-width','1000%').css('max-height','10000%');
         }
     });
     }
@@ -196,7 +196,7 @@ function naturalSort (a, b) {
     window.addEventListener('keydown', function(e) {
     var keyCode = e.keyCode;
     var CSA = [e.ctrlKey, e.shiftKey, e.altKey];
-    console.log(keyCode);
+    //console.log(keyCode);
     //console.log(String(CSA) + '; '+keyCode);
     
     // caseof : Enter
@@ -218,7 +218,7 @@ function naturalSort (a, b) {
         full_size();
     }
     // caseof : ;
-    if(keyCode == 59){
+    if(keyCode == 59 || keyCode == 186){
         change_bg();
     }
 }, true);
