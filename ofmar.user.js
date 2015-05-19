@@ -2,24 +2,35 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.4
+// @version        0.2.5
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
+// @exclude        file:///*.png
+// @exclude        file:///*.jpg
+// @exclude        file:///*.jpeg
+// @exclude        file:///*.JPG
+// @exclude        file:///*.JPEG
+// @exclude        file:///*.PNG
+// @exclude        file:///*.gif
+// @exclude        file:///*.GIF
 // @copyright      2015 zackad
 // @require        http://code.jquery.com/jquery-1.10.1.min.js
 // ==/UserScript==
 $(document).ready(function(){
     var gvar = function(){};
-    gvar.__DEBUG__ = 0;     //DEBUG MODE
+    gvar.__DEBUG__ = 1;     //DEBUG MODE
     
 	gvar.style = ''
 		+'<style type="text/css">'
         +'.location-container {background-color:#ddd; padding:5px 10px; font-size:20px; border-radius:10px;}'
 		+'.location-container a {color:blue; font-weight:bold; text-decoration:none;}'
 		+'.location-container a.current {color:red;}'
-        +'img {max-width:95%!important; max-height:1000px!important;}'
+        +'img {max-width:95%; max-height:900px;}'
         +'body {max-width:100%!important;}'
-        +'#container {padding:0px; margin:0px; background-color:black;}'
+        +'#container {padding:0px; margin:0px;}'
+        +'.black {background-color: black;}'
+        +'.grey {background-color: grey;}'
+        +'.white {background-color: white;}'
 		+'</style>'
 		;
 	var container = ''
@@ -40,13 +51,6 @@ $(document).ready(function(){
 		+'a[href$=".JPEG"],'
 		+'a[href$=".gif"]';
 	var img = $(imgSelector);
-    //var controler = '<a href="javascript:void(0);" id="disable">disable</a>';
-    var controler = ''
-        //+'<button id="disable" value="Disable">'
-        +'<img src="http://puu.sh/hPVpp/7e21ef7286.png"'
-        +'id="enable" alt="Read This Folder!">'
-        //+'<button id="enable">Read this folder</button>'
-        ;
     
 	function enable(){		
 		if (img.length != 0){
@@ -56,8 +60,7 @@ $(document).ready(function(){
 			$('body').append(container)
 				.append(loc_wrp)
 				.prepend(loc_wrp)
-				.css('background-color','black');
-			//$('.location-container').append('controler');
+				.addClass('black').removeClass('white grey');
 		}
 		img.each(function(){
 			var temp = $(this).attr('href');
@@ -87,7 +90,6 @@ $(document).ready(function(){
             $('.location-container').append(loc.a);
             clog(loc.temp);
         }
-        //$('.location-container').append(controler);
     }
     function clog(x){
         if(!gvar.__DEBUG__) return;
@@ -96,29 +98,48 @@ $(document).ready(function(){
     function here(){
         return window.location.href;
     }
-    function disable(){
-        //$('body').load((here());
-        clog(here());
-    }
 	function init(){
-		var temp = $('body').children();
-		//$('body').children().remove();
 		$('head').append(gvar.style);
-        $('body').prepend(container);
+        $('body').prepend(container).addClass('white').removeClass('grey black');
 		$('body').prepend(loc_wrp);
 		$('h1, .up').remove();
-//      $('.container-container').append(controler);
-//		var fLink = $('table a').attr('href');
-//		fLink.sort(naturalSort);
-//		clog(fLink);
 	}
     function lets_roll(){
 		if (img.length == 0) return;
         init();
 		enable();
         getLoc();
-        $('#enable').hide();
+        resize();
 	}
+	function fit_width(){
+	   $('img').css('max-width','100%').css('max-height','100%');
+	   clog('full_size');
+	}
+	function full_size(){
+	   $('img').css('max-width','1000%').css('max-height','100%');
+	   clog('full_size');
+	}
+	function resize(){
+    $('img').click(function(){
+        clog('clicked');
+        if($(this).attr('style')){
+            $(this).removeAttr('style');
+        }else {
+            $(this).css('max-width','1000%').css('max-height','100%');
+        }
+    });
+    }
+    function change_bg(){
+        var background = $('body, #container');
+        var color = background.attr('class');
+        clog(color);
+        switch (color){
+            case 'black': background.addClass('grey').removeClass('black white'); break;
+            case 'grey': background.addClass('white').removeClass('black grey'); break;
+            case 'white': background.addClass('black').removeClass('grey white'); break;
+        }
+        clog('ch bg');
+    }
 /*
  * Natural Sort algorithm for Javascript - Version 0.8 - Released under MIT license
  * Author: Jim Palmer (based on chunking idea from Dave Koelle)
@@ -170,24 +191,35 @@ function naturalSort (a, b) {
 }
     init();
     getLoc();
-    $('#disable').click(disable);
-    $('#enable').click(lets_roll);
-    
+
     /* Hotkey */
     window.addEventListener('keydown', function(e) {
     var keyCode = e.keyCode;
     var CSA = [e.ctrlKey, e.shiftKey, e.altKey];
-    //console.log(keyCode);
+    console.log(keyCode);
     //console.log(String(CSA) + '; '+keyCode);
     
     // caseof : Enter
     if(keyCode == 13 ){
         lets_roll();
     }
-        // caseof : \ 'backslash'
+    // caseof : \ 'backslash'
     if(keyCode == 220){
         if(img.length == 0) return;
         window.location.reload();
+    }
+    // caseof : ]
+    if(keyCode == 221){
+        if(img.length == 0) return;
+        fit_width();
+    }
+    // caseof : [
+    if(keyCode == 219){
+        full_size();
+    }
+    // caseof : ;
+    if(keyCode == 59){
+        change_bg();
     }
 }, true);
 }

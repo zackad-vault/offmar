@@ -2,7 +2,11 @@
 Userscript for reading manga/view image locally in strip way.
 
 ## Hotkey
-**Enter** : read current folder  
-**\** (backslash) : view file list
-
-> Experimental mode in Firefox browser.
+|Hotkey|Function|
+|---|---|
+**Enter** | Read current folder  
+**\** (backslash) | View file list (reload)
+**]** | Fit width image size (all)
+**[** | Full size image size (all)
+**;** | Change background colour (black, grey, white)
+**click** | Full size current image
