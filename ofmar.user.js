@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.6
+// @version        0.2.7
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -13,12 +13,27 @@
 // @exclude        file:///*.PNG
 // @exclude        file:///*.gif
 // @exclude        file:///*.GIF
+// @exclude        file:///*.htm
+// @exclude        file:///*.html
+// @exclude        file:///*.asp
+// @exclude        file:///*.aspx
 // @copyright      2015 zackad
 // @require        http://code.jquery.com/jquery-1.10.1.min.js
 // ==/UserScript==
+/*
+    PLANNED FEATURE :
+    - hotkey next/prev image
+    - auto next/prev chapter [low]
+    - natural sort file listing
+    - user preference [low]
+*/
 $(document).ready(function(){
     var gvar = function(){};
     gvar.__DEBUG__ = 0;     //DEBUG MODE
+    
+    if (typeof(localStorage.bg) == 'undefined'){
+        localStorage.setItem('bg','black');
+    }
     
 	gvar.style = ''
 		+'<style type="text/css">'
@@ -60,7 +75,8 @@ $(document).ready(function(){
 			$('body').append(container)
 				.append(loc_wrp)
 				.prepend(loc_wrp)
-				.addClass('black').removeClass('white grey');
+				.removeClass('white grey black')
+				.addClass(localStorage.bg);
 		}
 		img.each(function(){
 			var temp = $(this).attr('href');
@@ -101,7 +117,7 @@ $(document).ready(function(){
 	function init(){
 		$('head').append(gvar.style);
         $('body').prepend(container).addClass('white').removeClass('grey black');
-		$('body').prepend(loc_wrp);
+		$('body').prepend(loc_wrp).append(loc_wrp);
 		$('h1, .up').remove();
 	}
     function lets_roll(){
@@ -134,9 +150,18 @@ $(document).ready(function(){
         var color = background.attr('class');
         clog(color);
         switch (color){
-            case 'black': background.addClass('grey').removeClass('black white'); break;
-            case 'grey': background.addClass('white').removeClass('black grey'); break;
-            case 'white': background.addClass('black').removeClass('grey white'); break;
+            case 'black': 
+                background.addClass('grey').removeClass('black white'); 
+                localStorage.setItem('bg', 'grey');
+                break;
+            case 'grey': 
+                background.addClass('white').removeClass('black grey'); 
+                localStorage.setItem('bg', 'white');
+                break;
+            case 'white': 
+                background.addClass('black').removeClass('grey white'); 
+                localStorage.setItem('bg', 'black');
+                break;
         }
         clog('ch bg');
     }
@@ -196,7 +221,7 @@ function naturalSort (a, b) {
     window.addEventListener('keydown', function(e) {
     var keyCode = e.keyCode;
     var CSA = [e.ctrlKey, e.shiftKey, e.altKey];
-    //console.log(keyCode);
+    //clog(keyCode);
     //console.log(String(CSA) + '; '+keyCode);
     
     // caseof : Enter
