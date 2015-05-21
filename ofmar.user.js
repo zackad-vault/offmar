@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.7
+// @version        0.2.8
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -41,6 +41,8 @@ $(document).ready(function(){
 		+'.location-container a {color:blue; font-weight:bold; text-decoration:none;}'
 		+'.location-container a.current {color:red;}'
         +'img {max-width:95%; max-height:900px;}'
+        +'img.full {max-width:1000%; max-height:10000%;}'
+        +'img.fit-width {max-width:100%; max-height:10000%;}'
         +'body {max-width:100%!important;}'
         +'#container {padding:0px; margin:0px;}'
         +'.black {background-color: black;}'
@@ -128,20 +130,22 @@ $(document).ready(function(){
         resize();
 	}
 	function fit_width(){
-	   $('img').css('max-width','100%').css('max-height','1000%');
+	   $('img').addClass('fit-width').removeClass('full');
 	   clog('fit width');
 	}
 	function full_size(){
-	   $('img').css('max-width','1000%').css('max-height','10000%');
+	   $('img').addClass('full').removeClass('fit-width');
 	   clog('full_size');
 	}
 	function resize(){
     $('img').click(function(){
         clog('clicked');
-        if($(this).attr('style')){
-            $(this).removeAttr('style');
+        if($(this).hasClass('full')){
+            $(this).removeClass('full fit-width');
+        }else if($(this).hasClass('fit-width')){
+            $(this).removeClass('fit-width').addClass('full');
         }else {
-            $(this).css('max-width','1000%').css('max-height','10000%');
+            $(this).addClass('fit-width');
         }
     });
     }
@@ -221,30 +225,32 @@ function naturalSort (a, b) {
     window.addEventListener('keydown', function(e) {
     var keyCode = e.keyCode;
     var CSA = [e.ctrlKey, e.shiftKey, e.altKey];
-    //clog(keyCode);
+    clog(keyCode);
     //console.log(String(CSA) + '; '+keyCode);
     
-    // caseof : Enter
-    if(keyCode == 13 ){
-        lets_roll();
-    }
-    // caseof : \ 'backslash'
-    if(keyCode == 220){
-        if(img.length == 0) return;
-        window.location.reload();
-    }
-    // caseof : ]
-    if(keyCode == 221){
-        if(img.length == 0) return;
-        fit_width();
-    }
-    // caseof : [
-    if(keyCode == 219){
-        full_size();
-    }
-    // caseof : ;
-    if(keyCode == 59 || keyCode == 186){
-        change_bg();
+    switch (keyCode){
+        case 13: // Enter
+            lets_roll(); 
+            break;
+        case 220: // \
+            if(img.length == 0) return;
+            window.location.reload();
+            break;
+        case 221: // ]
+            if(img.length == 0) return;
+            fit_width();
+            break;
+        case 219: // [
+            full_size();
+            break;
+        case 59: // ; firefox
+        case 186: // ; chrome
+            change_bg();
+            break;
+        case 75: window.scrollBy(0,250); break; // k
+        case 73: window.scrollBy(0,-250); break;// i
+        case 74: window.scrollBy(-100,0); break;// j
+        case 76: window.scrollBy(100,0); break; // l
     }
 }, true);
 }
