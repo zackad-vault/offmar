@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.8
+// @version        0.2.9
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -24,7 +24,7 @@
     PLANNED FEATURE :
     - hotkey next/prev image
     - auto next/prev chapter [low]
-    - natural sort file listing
+    - [done] natural sort file listing (hard code)
     - user preference [low]
 */
 $(document).ready(function(){
@@ -45,6 +45,7 @@ $(document).ready(function(){
         +'img.fit-width {max-width:100%; max-height:10000%;}'
         +'body {max-width:100%!important;}'
         +'#container {padding:0px; margin:0px;}'
+        +'#list {padding-left:20px;}'
         +'.black {background-color: black;}'
         +'.grey {background-color: grey;}'
         +'.white {background-color: white;}'
@@ -121,6 +122,7 @@ $(document).ready(function(){
         $('body').prepend(container).addClass('white').removeClass('grey black');
 		$('body').prepend(loc_wrp).append(loc_wrp);
 		$('h1, .up').remove();
+//		nSort();
 	}
     function lets_roll(){
 		if (img.length == 0) return;
@@ -168,6 +170,63 @@ $(document).ready(function(){
                 break;
         }
         clog('ch bg');
+    }
+    function nSort(){
+        naturalSort.insensitive = true;
+        
+        var folder = $('.dir');
+        var file = $('.file');
+        //clog(folder);
+        var fileList = new Array();
+        var folderList = new Array();
+        var i = 0;
+        var list = '<div id="list"></div>';
+        
+        file.each(function(){
+            fileList[i] = $(this).attr('href');
+        //    clog(fileList);
+            i++;
+        });
+        i = 0;
+        folder.each(function(){
+            folderList[i] = $(this).attr('href');
+        //    clog(fileList);
+            i++;
+        });
+        $('#container').prepend(list);
+        $('table').remove();
+        
+        folderList.sort(naturalSort);
+        folderList.forEach(function(entry){
+            entry = decodeURI(entry);
+            entry = entry.substr(0, entry.length - 1);
+            var insert = '<p><a class="dir" href="'
+                +entry 
+                +'">'
+                +entry 
+                +'</a></p>'
+                ;
+            $('#list').append(insert);
+            clog(entry);
+        });
+        //clog(folderList);
+        fileList.sort(naturalSort);
+        fileList.forEach(function(entry){
+            entry = decodeURI(entry);
+            var ext = entry.substr(entry.lastIndexOf('.'),entry.length);
+            var insert = '<p><a class="file" href="'
+                +entry 
+                +'">' 
+                +'<img src="moz-icon://'
+                +ext
+                +'?size=16"'
+                +'></img>'
+                +entry 
+                +'</a></p>'
+                ;
+            $('#list').append(insert);
+            clog(entry);
+        });
     }
 /*
  * Natural Sort algorithm for Javascript - Version 0.8 - Released under MIT license
@@ -219,7 +278,14 @@ function naturalSort (a, b) {
     return 0;
 }
     init();
+    nSort();
     getLoc();
+
+    //natural sort test
+    var x = ['01','13','34','09'];
+    clog(x);
+    x.sort(naturalSort);
+    clog(x);
 
     /* Hotkey */
     window.addEventListener('keydown', function(e) {
