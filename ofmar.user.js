@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.9
+// @version        0.2.10
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -202,7 +202,7 @@ $(document).ready(function(){
             entry = entry.substr(0, entry.length - 1);
             var insert = '<p><a class="dir" href="'
                 +entry 
-                +'">'
+                +'/">'
                 +entry 
                 +'</a></p>'
                 ;
@@ -278,8 +278,8 @@ function naturalSort (a, b) {
     return 0;
 }
     init();
-    nSort();
     getLoc();
+    nSort();
 
     //natural sort test
     var x = ['01','13','34','09'];
