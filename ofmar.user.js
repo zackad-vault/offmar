@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.12
+// @version        0.2.13
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -128,7 +128,7 @@ $(document).ready(function(){
     function lets_roll(){
         img = $(imgLink);
 		if (img.length == 0) return;
-        init();
+//        init();
 		enable();
         getLoc();
         resize();
