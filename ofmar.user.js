@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.11
+// @version        0.2.12
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -29,7 +29,7 @@
 */
 $(document).ready(function(){
     var gvar = function(){};
-    gvar.__DEBUG__ = 0;     //DEBUG MODE
+    gvar.__DEBUG__ = 1;     //DEBUG MODE
     
     if (typeof(localStorage.bg) == 'undefined'){
         localStorage.setItem('bg','black');
@@ -60,7 +60,7 @@ $(document).ready(function(){
 		+'<div class="location-container">'
 		+'</div>'
 		;
-	var imgSelector = ''
+	var imgLink = ''
 		+'a[href$=".jpg"],'
 		+'a[href$=".jpeg"],'
 		+'a[href$=".png"],'
@@ -68,10 +68,10 @@ $(document).ready(function(){
 		+'a[href$=".JPG"],'
 		+'a[href$=".JPEG"],'
 		+'a[href$=".gif"]';
-	var img = $(imgSelector);
+//	var img = $(imgLink);
     
 	function enable(){
-	   img = $(imgSelector);
+	   img = $(imgLink);
 		if (img.length != 0){
 			$('body').children().remove();
 			$('head').children().remove();
@@ -123,9 +123,10 @@ $(document).ready(function(){
         $('body').prepend(container).addClass('white').removeClass('grey black');
 		$('body').prepend(loc_wrp).append(loc_wrp);
 		$('h1, .up').remove();
-//		nSort();
+		nSort();
 	}
     function lets_roll(){
+        img = $(imgLink);
 		if (img.length == 0) return;
         init();
 		enable();
@@ -280,7 +281,7 @@ function naturalSort (a, b) {
 }
     init();
     getLoc();
-    nSort();
+//    nSort();
 
     //natural sort test
     var x = ['01','13','34','09'];
@@ -297,13 +298,16 @@ function naturalSort (a, b) {
     
     switch (keyCode){
         case 13: // Enter
-            lets_roll(); 
+            lets_roll();
+            $('img').removeClass('full fit-width');
             break;
         case 220: // \
+            img = $('img');
             if(img.length == 0) return;
             window.location.reload();
             break;
         case 221: // ]
+            img = $('img');
             if(img.length == 0) return;
             fit_width();
             break;
