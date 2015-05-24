@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.2.13
+// @version        0.3.14
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -29,7 +29,7 @@
 */
 $(document).ready(function(){
     var gvar = function(){};
-    gvar.__DEBUG__ = 1;     //DEBUG MODE
+    gvar.__DEBUG__ = 0;     //DEBUG MODE
     
     if (typeof(localStorage.bg) == 'undefined'){
         localStorage.setItem('bg','black');
@@ -202,7 +202,8 @@ $(document).ready(function(){
         folderList.forEach(function(entry){
             entry = decodeURI(entry);
             entry = entry.substr(0, entry.length - 1);
-            var insert = '<p><a class="dir" href="'
+            entry = entry.substr(entry.lastIndexOf('/') + 1,entry.length);
+            var insert = '<p><a class="icon dir" href="'
                 +entry 
                 +'/">'
                 +entry 
@@ -216,16 +217,26 @@ $(document).ready(function(){
         fileList.forEach(function(entry){
             entry = decodeURI(entry);
             var ext = entry.substr(entry.lastIndexOf('.'),entry.length);
-            var insert = '<p><a class="file" href="'
-                +entry 
-                +'">' 
-                +'<img src="moz-icon://'
-                +ext
-                +'?size=16"'
-                +'></img>'
-                +entry 
-                +'</a></p>'
-                ;
+            entry = entry.substr(entry.lastIndexOf('/')+1,entry.length);
+            if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+                var insert = '<p><a class="file icon" href="'
+                    +entry 
+                    +'">' 
+                    +'<img src="moz-icon://'
+                    +ext
+                    +'?size=16"'
+                    +'></img>'
+                    +entry 
+                    +'</a></p>'
+                    ;
+            }else {
+                var insert = '<p><a class="file icon" href="'
+                    +entry 
+                    +'">' 
+                    +entry 
+                    +'</a></p>'
+                    ;
+            }
             $('#list').append(insert);
             clog(entry);
         });
@@ -281,13 +292,6 @@ function naturalSort (a, b) {
 }
     init();
     getLoc();
-//    nSort();
-
-    //natural sort test
-    var x = ['01','13','34','09'];
-    clog(x);
-    x.sort(naturalSort);
-    clog(x);
 
     /* Hotkey */
     window.addEventListener('keydown', function(e) {
