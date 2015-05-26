@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.3.14
+// @version        0.3.15
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -100,11 +100,11 @@ $(document).ready(function(){
         for (var i=3; i < loc.current.length-1; i++){
             loc.temp += loc.current[i]+ '/';
             if (i == loc.i-2){
-                loc.a = '<a href="file:///' + loc.temp + '" class="current">' + loc.current[i] +' / </a>';
+                loc.a = '<a href="file:///' + loc.temp + '" class="current">' + unescape(loc.current[i]) +' / </a>';
                 //title
-                $('head').append('<title>'+loc.current[i]+'</title>');
+                $('head').append('<title>'+unescape(loc.current[i])+'</title>');
             } else {
-                loc.a = '<a href="file:///' + loc.temp + '">' + loc.current[i] +' / </a>';
+                loc.a = '<a href="file:///' + loc.temp + '">' + unescape(loc.current[i]) +' / </a>';
             }
             clog(loc.a);
             $('.location-container').append(loc.a);
@@ -206,7 +206,7 @@ $(document).ready(function(){
             var insert = '<p><a class="icon dir" href="'
                 +entry 
                 +'/">'
-                +entry 
+                +unescape(entry)
                 +'</a></p>'
                 ;
             $('#list').append(insert);
