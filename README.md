@@ -15,5 +15,6 @@ change to **true** | check **Allow access to file URLs**
 **\** (backslash) | View file list (reload)
 **]** | Fit width image size (all)
 **[** | Full size image size (all)
+**.** | Fit height
 **;** | Change background colour (black, grey, white)
-**click** | Full size current image
+**click** | Resize current image
