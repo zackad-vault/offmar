@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.3.15
+// @version        0.3.16
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -24,7 +24,6 @@
     PLANNED FEATURE :
     - hotkey next/prev image
     - auto next/prev chapter [low]
-    - [done] natural sort file listing (hard code)
     - user preference [low]
 */
 $(document).ready(function(){
@@ -37,18 +36,21 @@ $(document).ready(function(){
     
 	gvar.style = ''
 		+'<style type="text/css">'
+		+'@media screen {'
         +'.location-container {background-color:#ddd; padding:5px 10px; font-size:20px; border-radius:10px;}'
 		+'.location-container a {color:blue; font-weight:bold; text-decoration:none;}'
 		+'.location-container a.current {color:red;}'
         +'img {max-width:95%; max-height:900px;}'
         +'img.full {max-width:1000%; max-height:10000%;}'
         +'img.fit-width {max-width:100%; max-height:10000%;}'
+        +'img.fit-height {max-height: 100vh!important;}'
         +'body {max-width:100%!important;}'
         +'#container {padding:0px; margin:0px;}'
         +'#list {padding-left:20px;}'
         +'.black {background-color: black;}'
         +'.grey {background-color: grey;}'
         +'.white {background-color: white;}'
+        +'}'
 		+'</style>'
 		;
 	var container = ''
@@ -132,14 +134,6 @@ $(document).ready(function(){
 		enable();
         getLoc();
         resize();
-	}
-	function fit_width(){
-	   $('img').addClass('fit-width').removeClass('full');
-	   clog('fit width');
-	}
-	function full_size(){
-	   $('img').addClass('full').removeClass('fit-width');
-	   clog('full_size');
 	}
 	function resize(){
     $('img').click(function(){
@@ -226,14 +220,14 @@ $(document).ready(function(){
                     +ext
                     +'?size=16"'
                     +'></img>'
-                    +entry 
+                    +unescape(entry)
                     +'</a></p>'
                     ;
             }else {
                 var insert = '<p><a class="file icon" href="'
                     +entry 
                     +'">' 
-                    +entry 
+                    +unescape(entry)
                     +'</a></p>'
                     ;
             }
@@ -298,12 +292,12 @@ function naturalSort (a, b) {
     var keyCode = e.keyCode;
     var CSA = [e.ctrlKey, e.shiftKey, e.altKey];
     clog(keyCode);
-    //console.log(String(CSA) + '; '+keyCode);
+    console.log(String(CSA) + '; '+keyCode);
     
     switch (keyCode){
         case 13: // Enter
             lets_roll();
-            $('img').removeClass('full fit-width');
+            $('img').removeClass('full fit-width fit-height');
             break;
         case 220: // \
             img = $('img');
@@ -313,10 +307,10 @@ function naturalSort (a, b) {
         case 221: // ]
             img = $('img');
             if(img.length == 0) return;
-            fit_width();
+            $('img').addClass('fit-width').removeClass('full fit-height');
             break;
         case 219: // [
-            full_size();
+            $('img').addClass('full').removeClass('fit-width fit-height');
             break;
         case 59: // ; firefox
         case 186: // ; chrome
@@ -326,6 +320,7 @@ function naturalSort (a, b) {
         case 73: window.scrollBy(0,-250); break;// i
         case 74: window.scrollBy(-100,0); break;// j
         case 76: window.scrollBy(100,0); break; // l
+        case 190: $('img').removeClass('full fit-width').addClass('fit-height'); break; // .
     }
 }, true);
 }
