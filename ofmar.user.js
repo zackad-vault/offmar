@@ -28,7 +28,7 @@
 */
 $(document).ready(function(){
     var gvar = function(){};
-    gvar.__DEBUG__ = 0;     //DEBUG MODE
+    gvar.__DEBUG__ = 0;
     
     if (typeof(localStorage.bg) == 'undefined'){
         localStorage.setItem('bg','black');
@@ -70,7 +70,6 @@ $(document).ready(function(){
         +'a[href$=".JPG"],'
         +'a[href$=".JPEG"],'
         +'a[href$=".gif"]';
-	// var img = $(imgLink);
     
     function enable(){
         img = $(imgLink);
@@ -91,7 +90,6 @@ $(document).ready(function(){
             $('#container center').append(image);
         });
     }
-    //find current location
     function getLoc(){
         var loc = function(){};
         loc.current = window.location.href;
@@ -103,7 +101,6 @@ $(document).ready(function(){
             loc.temp += loc.current[i]+ '/';
             if (i == loc.i-2){
                 loc.a = '<a href="file:///' + loc.temp + '" class="current">' + unescape(loc.current[i]) +' / </a>';
-                //title
                 $('head').append('<title>'+unescape(loc.current[i])+'</title>');
             } else {
                 loc.a = '<a href="file:///' + loc.temp + '">' + unescape(loc.current[i]) +' / </a>';
@@ -130,7 +127,6 @@ $(document).ready(function(){
     function lets_roll(){
         img = $(imgLink);
         if (img.length == 0) return;
-        // init();
         enable();
         getLoc();
         resize();
@@ -172,7 +168,6 @@ $(document).ready(function(){
         
         var folder = $('.dir');
         var file = $('.file');
-        //clog(folder);
         var fileList = new Array();
         var folderList = new Array();
         var i = 0;
@@ -180,13 +175,11 @@ $(document).ready(function(){
         
         file.each(function(){
             fileList[i] = $(this).attr('href');
-        //    clog(fileList);
             i++;
         });
         i = 0;
         folder.each(function(){
             folderList[i] = $(this).attr('href');
-        //    clog(fileList);
             i++;
         });
         $('#container').prepend(list);
@@ -206,7 +199,6 @@ $(document).ready(function(){
             $('#list').append(insert);
             clog(entry);
         });
-        //clog(folderList);
         fileList.sort(naturalSort);
         fileList.forEach(function(entry){
             entry = decodeURI(entry);
