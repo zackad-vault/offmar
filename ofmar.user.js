@@ -30,7 +30,7 @@ $(document).ready(function(){
     var gvar = function(){};
     gvar.__DEBUG__ = 0;
     
-    if (typeof(localStorage.bg) == 'undefined'){
+    if (typeof(localStorage.bg) == 'undefined') {
         localStorage.setItem('bg','black');
     }
 
@@ -81,7 +81,7 @@ $(document).ready(function(){
         clog(keyCode);
         console.log(String(CSA) + '; '+keyCode);
 
-        switch (keyCode){
+        switch (keyCode) {
             case 13: // Enter
                 lets_roll();
                 $('img').removeClass('full fit-width fit-height');
@@ -115,7 +115,7 @@ $(document).ready(function(){
         var background = $('body, #container');
         var color = background.attr('class');
         clog(color);
-        switch (color){
+        switch (color) {
             case 'black':
                 background.addClass('grey').removeClass('black white'); 
                 localStorage.setItem('bg', 'grey');
@@ -133,13 +133,13 @@ $(document).ready(function(){
     }
 
     function clog(x) {
-        if(!gvar.__DEBUG__) return;
+        if (!gvar.__DEBUG__) return;
         console && console.log && console.log(x);
     }
 
     function enable() {
         img = $(imgLink);
-        if (img.length != 0){
+        if (img.length != 0) {
             $('body').children().remove();
             $('head').children().remove();
             $('head').append(gvar.style);
@@ -150,7 +150,7 @@ $(document).ready(function(){
                 .addClass(localStorage.bg)
                 ;
         }
-        img.each(function(){
+        img.each(function() {
             var temp = $(this).attr('href');
             var image = '<img src="' + temp + '"><br>';
             $('#container center').append(image);
@@ -164,9 +164,9 @@ $(document).ready(function(){
         loc.current = loc.current.split('/');
         loc.i = loc.current.length;
         loc.temp = '';
-        for (var i=3; i < loc.current.length-1; i++){
+        for (var i=3; i < loc.current.length-1; i++) {
             loc.temp += loc.current[i]+ '/';
-            if (i == loc.i-2){
+            if (i == loc.i-2) {
                 loc.a = '<a href="file:///' + loc.temp + '" class="current">' + unescape(loc.current[i]) +' / </a>';
                 $('head').append('<title>'+unescape(loc.current[i])+'</title>');
             } else {
@@ -199,13 +199,13 @@ $(document).ready(function(){
     }
 
     function resize() {
-        $('img').click(function(){
+        $('img').click(function() {
             clog('clicked');
-            if($(this).hasClass('full')){
+            if ($(this).hasClass('full')) {
                 $(this).removeClass('full fit-width');
-            }else if($(this).hasClass('fit-width')){
+            } else if ($(this).hasClass('fit-width')) {
                 $(this).removeClass('fit-width').addClass('full');
-            }else {
+            } else {
                 $(this).addClass('fit-width');
             }
         });
@@ -271,12 +271,12 @@ $(document).ready(function(){
         var i = 0;
         var list = '<div id="list"></div>';
 
-        file.each(function(){
+        file.each(function() {
             fileList[i] = $(this).attr('href');
             i++;
         });
         i = 0;
-        folder.each(function(){
+        folder.each(function() {
             folderList[i] = $(this).attr('href');
             i++;
         });
@@ -284,7 +284,7 @@ $(document).ready(function(){
         $('table').remove();
 
         folderList.sort(naturalSort);
-        folderList.forEach(function(entry){
+        folderList.forEach(function(entry) {
             entry = decodeURI(entry);
             entry = entry.substr(0, entry.length - 1);
             entry = entry.substr(entry.lastIndexOf('/') + 1,entry.length);
@@ -298,11 +298,11 @@ $(document).ready(function(){
             clog(entry);
         });
         fileList.sort(naturalSort);
-        fileList.forEach(function(entry){
+        fileList.forEach(function(entry) {
             entry = decodeURI(entry);
             var ext = entry.substr(entry.lastIndexOf('.'),entry.length);
             entry = entry.substr(entry.lastIndexOf('/')+1,entry.length);
-            if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+            if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
                 var insert = '<p><a class="file icon" href="'
                     +entry 
                     +'">' 
@@ -313,7 +313,7 @@ $(document).ready(function(){
                     +unescape(entry)
                     +'</a></p>'
                     ;
-            }else {
+            } else {
                 var insert = '<p><a class="file icon" href="'
                     +entry 
                     +'">' 
