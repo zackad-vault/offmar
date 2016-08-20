@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.3.16
+// @version        0.4.0
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
