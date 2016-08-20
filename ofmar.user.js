@@ -33,7 +33,7 @@ $(document).ready(function(){
     if (typeof(localStorage.bg) == 'undefined'){
         localStorage.setItem('bg','black');
     }
-    
+
     gvar.style = ''
         +'<style type="text/css">'
         +'@media screen {'
@@ -70,7 +70,10 @@ $(document).ready(function(){
         +'a[href$=".JPG"],'
         +'a[href$=".JPEG"],'
         +'a[href$=".gif"]';
-    
+
+    init();
+    getLoc();
+
     function enable(){
         img = $(imgLink);
         if (img.length != 0){
@@ -90,6 +93,7 @@ $(document).ready(function(){
             $('#container center').append(image);
         });
     }
+
     function getLoc(){
         var loc = function(){};
         loc.current = window.location.href;
@@ -110,13 +114,16 @@ $(document).ready(function(){
             clog(loc.temp);
         }
     }
+
     function clog(x){
         if(!gvar.__DEBUG__) return;
         console && console.log && console.log(x);
     }
+
     function here(){
         return window.location.href;
     }
+
     function init(){
         $('head').append(gvar.style);
         $('body').prepend(container).addClass('white').removeClass('grey black');
@@ -124,6 +131,7 @@ $(document).ready(function(){
         $('h1, .up').remove();
         nSort();
     }
+
     function lets_roll(){
         img = $(imgLink);
         if (img.length == 0) return;
@@ -131,6 +139,7 @@ $(document).ready(function(){
         getLoc();
         resize();
     }
+
     function resize(){
         $('img').click(function(){
             clog('clicked');
@@ -143,36 +152,38 @@ $(document).ready(function(){
             }
         });
     }
+
     function change_bg(){
         var background = $('body, #container');
         var color = background.attr('class');
         clog(color);
         switch (color){
-            case 'black': 
+            case 'black':
                 background.addClass('grey').removeClass('black white'); 
                 localStorage.setItem('bg', 'grey');
                 break;
-            case 'grey': 
+            case 'grey':
                 background.addClass('white').removeClass('black grey'); 
                 localStorage.setItem('bg', 'white');
                 break;
-            case 'white': 
+            case 'white':
                 background.addClass('black').removeClass('grey white'); 
                 localStorage.setItem('bg', 'black');
                 break;
         }
         clog('ch bg');
     }
+
     function nSort(){
         naturalSort.insensitive = true;
-        
+
         var folder = $('.dir');
         var file = $('.file');
         var fileList = new Array();
         var folderList = new Array();
         var i = 0;
         var list = '<div id="list"></div>';
-        
+
         file.each(function(){
             fileList[i] = $(this).attr('href');
             i++;
@@ -184,7 +195,7 @@ $(document).ready(function(){
         });
         $('#container').prepend(list);
         $('table').remove();
-        
+
         folderList.sort(naturalSort);
         folderList.forEach(function(entry){
             entry = decodeURI(entry);
@@ -227,6 +238,7 @@ $(document).ready(function(){
             clog(entry);
         });
     }
+
     /*
      * Natural Sort algorithm for Javascript - Version 0.8 - Released under MIT license
      * Author: Jim Palmer (based on chunking idea from Dave Koelle)
@@ -276,8 +288,6 @@ $(document).ready(function(){
         }
         return 0;
     }
-    init();
-    getLoc();
 
     /* Hotkey */
     window.addEventListener('keydown', function(e) {
@@ -285,7 +295,7 @@ $(document).ready(function(){
         var CSA = [e.ctrlKey, e.shiftKey, e.altKey];
         clog(keyCode);
         console.log(String(CSA) + '; '+keyCode);
-        
+
         switch (keyCode){
             case 13: // Enter
                 lets_roll();
