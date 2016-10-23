@@ -37,7 +37,7 @@ $(document).ready(function(){
     gvar.style = ''
         +'<style type="text/css">'
         +'@media screen {'
-        +'.location-container {background-color:#ddd; padding:5px 10px; font-size:20px; border-radius:10px;}'
+        +'.location-container {background-color:#ddd; padding:5px 10px; font-size:14px; border-radius:10px;}'
         +'.location-container a {color:blue; font-weight:bold; text-decoration:none;}'
         +'.location-container a.current {color:red;}'
         +'img {max-width:95%; max-height:900px;}'
@@ -150,9 +150,9 @@ $(document).ready(function(){
                 .addClass(localStorage.bg)
                 ;
         }
-        img.each(function() {
+        img.each(function(index) {
             var temp = $(this).attr('href');
-            var image = '<img src="' + temp + '"><br>';
+            var image = '<div class="img-container"><span>' + index + '</span><img src="' + temp + '" title="Page ' + (index+1) + ' - ' + temp + '"><br></div>';
             $('#container center').append(image);
         });
     }
