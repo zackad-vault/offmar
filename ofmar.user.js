@@ -2,7 +2,7 @@
 // @name           Manga Reader Offline
 // @namespace      zackad's script
 // @author         zackad
-// @version        0.4.2
+// @version        0.4.3
 // @description    read manga offline from your folder collection
 // @include        file:///*/*
 // @exclude        file:///*.png
@@ -108,6 +108,7 @@ $(document).ready(function(){
             case 74: window.scrollBy(-100,0); break;// j
             case 76: window.scrollBy(100,0); break; // l
             case 190: $('img').removeClass('full fit-width').addClass('fit-height'); break; // .
+            case 8: (navigator.userAgent.indexOf('Windows') === -1) ? history.back() : ''; break; // backspace
         }
     }, true);
 
