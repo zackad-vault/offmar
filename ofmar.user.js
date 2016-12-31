@@ -21,7 +21,7 @@
 // ==/UserScript==
 
 var gvar = function(){};
-gvar.DEBUG = true;
+gvar.DEBUG = false;
 gvar.style = ''
     +'<style type="text/css">'
     +'@media screen {'
