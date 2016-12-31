@@ -71,14 +71,22 @@ document.addEventListener("DOMContentLoaded", function() {
     getLoc();
 }, true);
 
-// DONE
+/**
+ * Firefox on linux distro (ubuntu) doesn't support back function
+ * with backspace keyboard button
+ *
+ * @return {void}
+ */
 function back() {
     if (navigator.userAgent.indexOf('Windows') === -1) {
         history.back();
     }
 }
 
-// DONE
+/**
+ * Change background color with ";" button
+ * @return {void}
+ */
 function changeBackground() {
     var body = selector('body')[0];
     var background = body.className;
@@ -98,7 +106,10 @@ function changeBackground() {
     }
 }
 
-// DONE
+/**
+ * Change image size to default (max-width: 95%)
+ * @return {void}
+ */
 function defaultSize() {
     var img = selector('img');
     img.forEach(function(elem, i) {
@@ -106,7 +117,10 @@ function defaultSize() {
     });
 }
 
-// DONE
+/**
+ * Change image size to fit screen width
+ * @return {void}
+ */
 function fitWidth() {
     var img = selector('img');
     img.forEach(function(elem, i) {
@@ -114,7 +128,10 @@ function fitWidth() {
     });
 }
 
-// DONE
+/**
+ * Change image size to full size
+ * @return {void}
+ */
 function fullSize() {
     var img = selector('img');
     img.forEach(function(elem, i) {
@@ -122,7 +139,10 @@ function fullSize() {
     });
 }
 
-// DONE
+/**
+ * Create navigation link as header and footer
+ * @return {void}
+ */
 function getLoc() {
     var loc = function(){};
     loc.current = decodeURI(window.location.pathname);
@@ -152,7 +172,10 @@ function getLoc() {
     }
 }
 
-// DONE
+/**
+ * Initiate preparation
+ * @return {void}
+ */
 function init() {
     var style = htmlToElement(gvar.style);
     var container = htmlToElement(gvar.container);
@@ -167,14 +190,22 @@ function init() {
     sort();
 }
 
-// DONE
+/**
+ * Create element from HTML string
+ * @param  {string}     html String for creating DOM Element
+ * @return {DOMElement}      DOM Element result
+ */
 function htmlToElement(html) {
     var template = document.createElement('template');
     template.innerHTML = html;
     return template.content.firstChild;
 }
 
-// DONE
+/**
+ * Event Handler for keyboard button
+ * @param  {event}  event   Keydown action
+ * @return {void}
+ */
 function keyAction(event){
     console.log("do");
     var keyCode = event.keyCode;
@@ -262,14 +293,21 @@ function naturalSort (a, b) {
     return 0;
 }
 
-// DONE
+/**
+ * Print console.log in debug mode
+ * @param  {mixed}   x  Item to be log print
+ * @return {void}
+ */
 function log(x) {
     if (gvar.DEBUG) {
         console.log(x);
     }
 }
 
-// DONE
+/**
+ * Initiate the reader in current page
+ * @return {void}
+ */
 function readThis() {
     var img = selector(gvar.imgLink);
     if (img.length === 0) {
@@ -300,12 +338,19 @@ function readThis() {
     resize();
 }
 
-// DONE
+/**
+ * Reload page
+ * @return {void}
+ */
 function reload() {
     window.location.reload();
 }
 
-// DONE
+/**
+ * Remove/delete element for given css selector
+ * @param  {string} cssSelector CSS selector for element to be removed from DOM
+ * @return {void}
+ */
 function removeElement(cssSelector) {
     var elements = selector(cssSelector);
     for (var i = elements.length - 1; i >= 0; i--) {
@@ -313,7 +358,10 @@ function removeElement(cssSelector) {
     }
 }
 
-// DONE
+/**
+ * Resize image on click event
+ * @return {void}
+ */
 function resize() {
     var img = selector('img');
     img.forEach(function(elem, i) {
@@ -352,12 +400,19 @@ function resize() {
     }
 }
 
-// DONE
+/**
+ * Get element from given css selector
+ * @param  {string} element css selector for desired element
+ * @return {Array}          Array of DOM
+ */
 function selector(element) {
     return document.querySelectorAll(element);
 }
 
-// DONE
+/**
+ * Sorting folder/file list with natural sort
+ * @return {void}
+ */
 function sort() {
     naturalSort.insensitive = true;
     var container = selector('#container');
