@@ -173,6 +173,7 @@ function getLoc() {
         selector('.location-container')[0].appendChild(a);
         selector('.location-container')[1].appendChild(a.cloneNode(true));
     }
+    selector('head title')[0].innerHTML = decodeURI(document.location.pathname.split('/').slice(-2)[0]);
 }
 
 /**
