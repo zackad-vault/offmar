@@ -1,23 +1,26 @@
 // ==UserScript==
-// @name           Manga Reader Offline
-// @namespace      zackad's script
-// @author         zackad
-// @version        0.5.0
-// @description    read manga offline from your folder collection
-// @include        file:///*/*
-// @exclude        file:///*.png
-// @exclude        file:///*.jpg
-// @exclude        file:///*.jpeg
-// @exclude        file:///*.JPG
-// @exclude        file:///*.JPEG
-// @exclude        file:///*.PNG
-// @exclude        file:///*.gif
-// @exclude        file:///*.GIF
-// @exclude        file:///*.htm
-// @exclude        file:///*.html
-// @exclude        file:///*.asp
-// @exclude        file:///*.aspx
-// @copyright      2015 - 2016 zackad
+// @name            Manga Reader Offline
+// @namespace       zackad's script
+// @author          zackad
+// @version         0.5.0
+// @description     read manga offline from your folder collection
+// @include         file:///*/*
+// @exclude         file:///*.png
+// @exclude         file:///*.jpg
+// @exclude         file:///*.jpeg
+// @exclude         file:///*.JPG
+// @exclude         file:///*.JPEG
+// @exclude         file:///*.PNG
+// @exclude         file:///*.gif
+// @exclude         file:///*.GIF
+// @exclude         file:///*.htm
+// @exclude         file:///*.html
+// @exclude         file:///*.asp
+// @exclude         file:///*.aspx
+// @grant           GM_setStyle
+// @grant           GM_getStyle
+// @run-at          document-start
+// @copyright       2015 - 2017 zackad
 // ==/UserScript==
 
 var gvar = function(){};
