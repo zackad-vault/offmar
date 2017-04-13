@@ -95,15 +95,15 @@
         var body = selector('body')[0];
         var background = body.className;
         switch (background) {
-            case 'black': 
+            case 'black':
                 body.className = 'grey';
                 localStorage.setItem('bg', 'grey');
                 break;
-            case 'grey': 
+            case 'grey':
                 body.className = 'white';
                 localStorage.setItem('bg', 'white');
                 break;
-            case 'white': 
+            case 'white':
                 body.className = 'black';
                 localStorage.setItem('bg', 'black');
                 break;
@@ -385,20 +385,19 @@
                         elem.className = 'fit-width';
                         break;
                 }
-            })
-        })
-        document.addEventListener()
+            });
+        });
         var background = body.className;
         switch (background) {
-            case 'black': 
+            case 'black':
                 body.className = 'grey';
                 localStorage.setItem('bg', 'grey');
                 break;
-            case 'grey': 
+            case 'grey':
                 body.className = 'white';
                 localStorage.setItem('bg', 'white');
                 break;
-            case 'white': 
+            case 'white':
                 body.className = 'black';
                 localStorage.setItem('bg', 'black');
                 break;
@@ -446,7 +445,7 @@
             entry = entry.substr(0, entry.length - 1);
             entry = entry.substr(entry.lastIndexOf('/') + 1,entry.length);
             var insert = htmlToElement('<p><a class="icon dir" href="'
-                +entry 
+                +entry
                 +'/">'
                 +unescape(entry)
                 +'</a></p>')
@@ -460,8 +459,8 @@
             entry = entry.substr(entry.lastIndexOf('/')+1,entry.length);
             if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
                 var insert = htmlToElement('<p><a class="file icon" href="'
-                    +entry 
-                    +'">' 
+                    +entry
+                    +'">'
                     +'<img src="moz-icon://'
                     +ext
                     +'?size=16"'
@@ -471,8 +470,8 @@
                     ;
             } else {
                 var insert = htmlToElement('<p><a class="file icon" href="'
-                    +entry 
-                    +'">' 
+                    +entry
+                    +'">'
                     +unescape(entry)
                     +'</a></p>')
                     ;
