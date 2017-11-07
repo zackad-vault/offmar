@@ -11,10 +11,10 @@ change to **true** | check **Allow access to file URLs**
 ## Hotkey
 |Hotkey|Function|
 |---|---|
-**Enter** | Read current folder  
-**\** (backslash) | View file list (reload)
-**]** | Fit width image size (all)
-**[** | Full size image size (all)
-**.** | Fit height
-**;** | Change background colour (black, grey, white)
+<kbd>Enter</kbd> | Read current folder
+<kbd>\\</kbd> | View file list (reload)
+<kbd>]</kbd> | Fit width image size (all)
+<kbd>[</kbd> | Full size image size (all)
+<kbd>.</kbd> | Fit height
+<kbd>;</kbd> | Change background colour (black, grey, white)
 **click** | Resize current image
