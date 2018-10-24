@@ -1,0 +1,20 @@
+{
+  "name": "offmar",
+  "version": "0.6",
+  "description": "Userscript for reading manga/view image locally in strip way.",
+  "main": "ofmar.user.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zackad/offmar.git"
+  },
+  "keywords": ["userscript", "manga", "reader"],
+  "author": "zackad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zackad/offmar/issues"
+  },
+  "homepage": "https://github.com/zackad/offmar#readme"
+}
