@@ -10,11 +10,20 @@
     "type": "git",
     "url": "git+https://github.com/zackad/offmar.git"
   },
-  "keywords": ["userscript", "manga", "reader"],
+  "keywords": [
+    "userscript",
+    "manga",
+    "reader"
+  ],
   "author": "zackad",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zackad/offmar/issues"
   },
-  "homepage": "https://github.com/zackad/offmar#readme"
+  "homepage": "https://github.com/zackad/offmar#readme",
+  "devDependencies": {
+    "webpack": "^4.22.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
 }
