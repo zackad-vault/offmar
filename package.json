@@ -4,6 +4,7 @@
   "description": "Userscript for reading manga/view image locally in strip way.",
   "main": "ofmar.user.js",
   "scripts": {
+    "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
