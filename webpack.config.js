@@ -1,4 +1,6 @@
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Metadata = require('./src/utils/metadata')
 
 module.exports = {
   module: {
@@ -15,6 +17,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    new webpack.BannerPlugin({
+      banner: Metadata.generate(),
+      raw: true,
+      entryOnly: true
     })
   ]
 }
