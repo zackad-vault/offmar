@@ -4,6 +4,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const Metadata = require('./src/utils/metadata')
 
 module.exports = {
+  output: {
+    filename: 'offmar.user.js'
+  },
   module: {
     rules: [
       {
