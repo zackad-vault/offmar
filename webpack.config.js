@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const Metadata = require('./src/utils/metadata')
 
 module.exports = {
@@ -12,6 +13,18 @@ module.exports = {
           loader: 'babel-loader'
         }
       }
+    ]
+  },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          output: {
+            beautify: false,
+            preamble: Metadata.generate()
+          }
+        }
+      })
     ]
   },
   plugins: [
