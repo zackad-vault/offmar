@@ -1,8 +1,16 @@
 {
   "name": "offmar",
+  "longName": "Offline Manga Reader",
+  "namespace": "https://github.com/zackad",
   "version": "0.6",
   "description": "Userscript for reading manga/view image locally in strip way.",
   "main": "ofmar.user.js",
+  "runAt": "document-start",
+  "grant": [],
+  "include": [
+    "file:///*"
+  ],
+  "exclude": [],
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --hot",
