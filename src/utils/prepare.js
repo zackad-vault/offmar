@@ -10,6 +10,10 @@ function cleanup() {
     .forEach(element => element.parentNode.removeChild(element))
 }
 
+function getListItems() {
+  return [...document.querySelectorAll('table table a')]
+}
+
 function insertRootContainer() {
   let root = document.createElement('div')
   root.setAttribute('id', 'root')
@@ -17,4 +21,4 @@ function insertRootContainer() {
   scriptNode.parentNode.insertBefore(root, scriptNode)
 }
 
-export { cleanup, insertRootContainer }
+export { cleanup, getListItems ,insertRootContainer }
