@@ -17,8 +17,7 @@ function getListItems() {
 function insertRootContainer() {
   let root = document.createElement('div')
   root.setAttribute('id', 'root')
-  let scriptNode = document.querySelector('body script')
-  scriptNode.parentNode.insertBefore(root, scriptNode)
+  document.body.prepend(root)
 }
 
 export { cleanup, getListItems ,insertRootContainer }
