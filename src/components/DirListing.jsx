@@ -6,6 +6,10 @@ export default class DirListing extends React.Component {
   render () {
     const directory = this.props.items
       .filter(item => item.className === 'dir')
+      .map(item => {
+        item.href = item.href.replace(/\/+\s*$/, '')
+        return item
+      })
       .sort(natsort({ insensitive: true }))
     const file = this.props.items
       .filter(item => item.className === 'file')
