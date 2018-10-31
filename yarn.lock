@@ -3199,6 +3199,11 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+natsort@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/natsort/-/natsort-2.0.0.tgz#acaad51ceb8fab6b485200dfdd314a9eeb9b0052"
+  integrity sha512-9K7OVGf591mcyQo+p0fHe9uVpOM+uu0E7auD+/O+KKo1I3/vKfR4tacj4675FnNWxxbhXl8/WQ0iLW8xkZ0Ahw==
+
 needle@^2.2.1:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/needle/-/needle-2.2.4.tgz#51931bff82533b1928b7d1d69e01f1b00ffd2a4e"
