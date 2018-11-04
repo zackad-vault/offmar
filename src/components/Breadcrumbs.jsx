@@ -18,8 +18,12 @@ export default class Breadcrumbs extends React.Component {
       })
     }
 
-    breadcrumbs.map((item) => {
-      item.element = <span key={item.path}> / <a href={item.path}>{item.title}</a></span>
+    breadcrumbs.map((item, i, arr) => {
+      if (arr.length - 1 === i) {
+        item.element = <span key={item.path}> / {item.title}</span>
+      } else {
+        item.element = <span key={item.path}> / <a href={item.path}>{item.title}</a></span>
+      }
       return item
     })
 
