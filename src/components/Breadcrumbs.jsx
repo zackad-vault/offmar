@@ -13,8 +13,8 @@ export default class Breadcrumbs extends React.Component {
     for (let item of items) {
       link += '/' + item
       breadcrumbs.push({
-        path: link,
-        title: item
+        path: decodeURIComponent(link),
+        title: decodeURIComponent(item)
       })
     }
 
