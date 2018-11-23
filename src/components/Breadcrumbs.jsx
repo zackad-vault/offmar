@@ -2,13 +2,12 @@ import React from 'react'
 
 export default class Breadcrumbs extends React.Component {
   render () {
-    const location = document.location.href
+    const location = document.location.pathname
     let items = location
-      .replace('file://', '')
       .split('/')
       .filter(item => item !== '')
 
-    let breadcrumbs = []
+    let breadcrumbs = [{path: '/', title: 'Root'}]
     let link = ''
     for (let item of items) {
       link += '/' + item
