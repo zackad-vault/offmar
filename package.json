@@ -5,7 +5,7 @@
   "version": "0.6",
   "description": "Userscript for reading manga/view image locally in strip way.",
   "main": "ofmar.user.js",
-  "runAt": "document-start",
+  "runAt": "document-end",
   "grant": [],
   "include": [
     "file:///*"

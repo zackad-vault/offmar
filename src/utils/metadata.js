@@ -10,7 +10,7 @@ let Metadata = {
   include: pkg.include,
   exclude: pkg.exclude,
   grant: pkg.grant,
-  run_at: 'document-start',
+  run_at: pkg.runAt,
   license: pkg.license,
   copyright: `2015 - ${new Date().getFullYear()} (c) ${pkg.author}`
 }
