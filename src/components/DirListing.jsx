@@ -1,5 +1,6 @@
 import React from 'react'
 import natsort from 'natsort'
+import Breadcrumbs from './Breadcrumbs.jsx'
 import ListItem from './ListItem.jsx'
 
 export default class DirListing extends React.Component {
@@ -19,6 +20,7 @@ export default class DirListing extends React.Component {
 
     return (
       <div>
+        <Breadcrumbs />
         {directory.map(item => <ListItem item={item} key={item.href}/>)}
         {file.map(item => <ListItem item={item} key={item.href}/>)}
       </div>
