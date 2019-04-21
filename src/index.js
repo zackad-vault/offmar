@@ -8,4 +8,7 @@ const listItems = Prepare.getListItems()
 Prepare.cleanup()
 Prepare.insertRootContainer()
 
-ReactDOM.render(<Offmar listItems={listItems} />, document.getElementById('root'))
+ReactDOM.render(
+  <Offmar listItems={listItems} />,
+  document.getElementById('root')
+)
