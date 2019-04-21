@@ -14,6 +14,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --hot",
+    "tailwind:build": "tailwind build src/css/tailwind.src.css -o src/css/tailwind.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
