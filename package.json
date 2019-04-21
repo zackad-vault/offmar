@@ -2,7 +2,7 @@
   "name": "offmar",
   "longName": "Offline Manga Reader",
   "namespace": "https://github.com/zackad",
-  "version": "0.6",
+  "version": "0.6.0",
   "description": "Userscript for reading manga/view image locally in strip way.",
   "main": "ofmar.user.js",
   "runAt": "document-end",
@@ -13,6 +13,9 @@
   "exclude": [],
   "scripts": {
     "build": "webpack --mode production",
+    "postbuild": "rm dist/index.html",
+    "prebuild": "npm run tailwind:build",
+    "prestart": "npm run tailwind:build",
     "start": "webpack-dev-server --mode development --hot",
     "tailwind:build": "tailwind build src/css/tailwind.src.css -o src/css/tailwind.css",
     "test": "echo \"Error: no test specified\" && exit 1"
