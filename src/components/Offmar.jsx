@@ -1,6 +1,6 @@
 import React from 'react'
 import natsort from 'natsort'
-import DirListing from './components/DirListing.jsx'
+import DirListing from './DirListing.jsx'
 
 export default class Offmar extends React.Component {
   constructor (props) {

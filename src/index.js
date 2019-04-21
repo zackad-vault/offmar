@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import * as Prepare from './utils/prepare'
-import Offmar from './Offmar.jsx'
+import Offmar from './components/Offmar.jsx'
 import './css/tailwind.css'
 
 const listItems = Prepare.getListItems()
