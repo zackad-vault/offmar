@@ -1,7 +1,7 @@
 function cleanup() {
   let cssSelector = [
     'head > link',
-    'head > style',
+    'head > style:not(:last-child)',
     'head > link',
     'head > script',
     'body > :not(script)'
