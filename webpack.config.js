@@ -22,6 +22,12 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      'react': 'preact-compat',
+      'react-dom': 'preact-compat'
+    }
+  },
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
