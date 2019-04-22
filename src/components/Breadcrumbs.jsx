@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'preact'
 
 function Breadcrumbs () {
   const location = document.location.pathname

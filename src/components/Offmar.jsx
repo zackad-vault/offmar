@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'preact'
 import natsort from 'natsort'
 import DirListing from './DirListing.jsx'
 
