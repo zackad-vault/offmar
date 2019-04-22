@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'preact'
 import Breadcrumbs from './Breadcrumbs.jsx'
 import ListItem from './ListItem.jsx'
 
