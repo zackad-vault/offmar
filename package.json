@@ -14,10 +14,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "postbuild": "rm dist/index.html",
-    "prebuild": "npm run tailwind:build --scripts-prepend-node-path",
-    "prestart": "npm run tailwind:build --scripts-prepend-node-path",
     "start": "webpack-dev-server --mode development --hot",
-    "tailwind:build": "tailwind build src/css/tailwind.src.css -o src/css/tailwind.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
