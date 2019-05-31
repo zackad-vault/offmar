@@ -12,12 +12,9 @@
   ],
   "exclude": [],
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "NODE_ENV=production webpack --mode production",
     "postbuild": "rm dist/index.html",
-    "prebuild": "npm run tailwind:build --scripts-prepend-node-path",
-    "prestart": "npm run tailwind:build --scripts-prepend-node-path",
     "start": "webpack-dev-server --mode development --hot",
-    "tailwind:build": "tailwind build src/css/tailwind.src.css -o src/css/tailwind.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -39,9 +36,11 @@
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
+    "@fullhuman/postcss-purgecss": "^1.2.0",
     "babel-loader": "^8.0.4",
     "css-loader": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
+    "postcss-loader": "^3.0.0",
     "style-loader": "^0.23.1",
     "tailwindcss": "^0.7.4",
     "uglifyjs-webpack-plugin": "^2.0.1",

@@ -1,7 +1,7 @@
 import React, { render } from 'preact'
 import * as Prepare from './utils/prepare'
 import Offmar from './components/Offmar.jsx'
-import './css/tailwind.css'
+import './css/tailwind.src.css'
 
 const listItems = Prepare.getListItems()
 
