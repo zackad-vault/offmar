@@ -1,6 +1,7 @@
 import React from 'preact'
 import natsort from 'natsort'
 import DirListing from './DirListing.jsx'
+import Reader from './Reader.jsx'
 
 export default class Offmar extends React.Component {
   constructor (props) {
@@ -58,7 +59,9 @@ export default class Offmar extends React.Component {
           directories={this.state.directories}
           files={this.state.files}
         /> :
-        'reader'
+        <Reader
+          files={this.state.files}
+        />
     )
   }
 }
