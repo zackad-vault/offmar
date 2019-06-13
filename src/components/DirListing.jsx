@@ -4,7 +4,7 @@ import ListItem from './ListItem.jsx'
 
 function DirListing ({ directories, files }) {
   return (
-    <div className='container mx-auto'>
+    <div>
       <Breadcrumbs />
       {
         directories

@@ -54,14 +54,18 @@ export default class Offmar extends React.Component {
 
   render () {
     return (
-      (this.state.mode === 'list') ?
-        <DirListing
-          directories={this.state.directories}
-          files={this.state.files}
-        /> :
-        <Reader
-          files={this.state.files}
-        />
+      <div className='container mx-auto'>
+        {
+          (this.state.mode === 'list') ?
+            <DirListing
+              directories={this.state.directories}
+              files={this.state.files}
+            /> :
+            <Reader
+              files={this.state.files}
+            />
+        }
+      </div>
     )
   }
 }
