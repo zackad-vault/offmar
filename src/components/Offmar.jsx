@@ -11,6 +11,8 @@ export default class Offmar extends React.Component {
       directories: [],
       files: [],
     }
+
+    this.handleKeydown = this.handleKeydown.bind(this)
   }
 
   componentDidMount () {
@@ -30,6 +32,23 @@ export default class Offmar extends React.Component {
       directories: directories,
       files: files
     })
+
+    document.addEventListener('keydown', this.handleKeydown)
+  }
+
+  handleKeydown (event) {
+    const keyCode = event.keyCode
+
+    switch(keyCode) {
+      // 'Enter/Return' key
+      case 13:
+        this.setState({mode: 'reader'})
+        break
+      // '\' key
+      case 220:
+        this.setState({mode: 'list'})
+        break
+    }
   }
 
   render () {
@@ -39,7 +58,7 @@ export default class Offmar extends React.Component {
           directories={this.state.directories}
           files={this.state.files}
         /> :
-        false
+        'reader'
     )
   }
 }
