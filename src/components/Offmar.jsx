@@ -50,7 +50,9 @@ export default class Offmar extends React.Component {
     switch(keyCode) {
       // 'Enter/Return' key
       case 13:
-        this.setState({mode: 'reader'})
+        if (this.state.images.length > 0) {
+          this.setState({mode: 'reader'})
+        }
         break
       // '\' key
       case 220:
