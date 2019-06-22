@@ -3,9 +3,9 @@ import Breadcrumbs from './Breadcrumbs.jsx'
 
 function Image ({ src, alt }) {
   return (
-    <img src={src} alt={alt}
-      className='block'
-    />
+    <div className='block items-center'>
+      <img src={src} alt={alt} />
+    </div>
   )
 }
 
