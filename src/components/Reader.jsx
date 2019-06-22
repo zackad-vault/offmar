@@ -13,7 +13,7 @@ function Reader ({ images }) {
   return (
     <div>
       <Breadcrumbs />
-      <div className='text-center'>
+      <div className='container mx-auto text-center'>
         {images.map((image, index) => <Image src={image} key={index} alt={image} />)}
       </div>
     </div>
