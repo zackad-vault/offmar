@@ -13,6 +13,7 @@
   "exclude": [],
   "scripts": {
     "build": "NODE_ENV=production webpack --mode production",
+    "prebuild": "rm -rf dist",
     "postbuild": "rm dist/index.html",
     "start": "webpack-dev-server --mode development --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
