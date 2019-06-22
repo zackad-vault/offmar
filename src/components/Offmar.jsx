@@ -11,6 +11,7 @@ export default class Offmar extends React.Component {
       mode: 'list',
       directories: [],
       files: [],
+      images: [],
     }
 
     this.handleKeydown = this.handleKeydown.bind(this)
@@ -29,9 +30,15 @@ export default class Offmar extends React.Component {
 
     const files = items
       .filter(item => item.className === 'file')
+
+    const regexFilter = new RegExp('.jpe?g$|.png$|.gif$', 'i')
+    const images = files
+      .filter(image => image.href.match(regexFilter))
+
     this.setState({
       directories: directories,
-      files: files
+      files: files,
+      images: images
     })
 
     document.addEventListener('keydown', this.handleKeydown)
@@ -62,7 +69,7 @@ export default class Offmar extends React.Component {
               files={this.state.files}
             /> :
             <Reader
-              files={this.state.files}
+              images={this.state.images}
             />
         }
       </div>

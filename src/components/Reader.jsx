@@ -9,10 +9,7 @@ function Image ({ src, alt }) {
   )
 }
 
-function Reader ({ files }) {
-  const regexFilter = new RegExp('.jpe?g$|.png$|.gif$', 'i')
-  const images = files.filter(image => image.href.match(regexFilter))
-
+function Reader ({ images }) {
   return (
     <div>
       <Breadcrumbs />
