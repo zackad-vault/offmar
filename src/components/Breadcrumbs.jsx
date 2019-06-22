@@ -2,13 +2,13 @@ import React from 'preact'
 
 function LabelItem ({title}) {
   return (
-    <span> / {title}</span>
+    <span className='text-grey'> / {title}</span>
   )
 }
 
 function LinkItem ({path, title}) {
   return (
-    <span> / <a href={path}>{title}</a></span>
+    <span> / <a href={path} className='text-grey-lighter no-underline'>{title}</a></span>
   )
 }
 
