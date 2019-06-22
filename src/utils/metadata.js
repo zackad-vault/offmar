@@ -7,6 +7,8 @@ let Metadata = {
   author: pkg.author,
   version: pkg.version,
   description: pkg.description,
+  updateURL: pkg.updateURL,
+  downloadURL: pkg.downloadURL,
   include: pkg.include,
   exclude: pkg.exclude,
   grant: pkg.grant,
