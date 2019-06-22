@@ -63,7 +63,7 @@ export default class Offmar extends React.Component {
 
   render () {
     return (
-      <div className='container mx-auto'>
+      <div className='bg-black text-white'>
         {
           (this.state.mode === 'list') ?
             <DirListing
