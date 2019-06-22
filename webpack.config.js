@@ -2,10 +2,11 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const Metadata = require('./src/utils/metadata')
+const package = require('./package.json')
 
 module.exports = {
   output: {
-    filename: 'offmar.user.js'
+    filename: `${package.longName.replace(/\s+/g, '_')}.user.js`
   },
   module: {
     rules: [
