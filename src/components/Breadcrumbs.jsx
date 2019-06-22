@@ -1,5 +1,11 @@
 import React from 'preact'
 
+function LabelItem ({title}) {
+  return (
+    <span> / {title}</span>
+  )
+}
+
 function Breadcrumbs () {
   const location = document.location.pathname
   let items = location
@@ -18,7 +24,7 @@ function Breadcrumbs () {
 
   breadcrumbs.map((item, i, arr) => {
     if (arr.length - 1 === i) {
-      item.element = <span key={item.path}> / {item.title}</span>
+      item.element = <LabelItem title={item.title}/>
     } else {
       item.element = <span key={item.path}> / <a href={item.path}>{item.title}</a></span>
     }
