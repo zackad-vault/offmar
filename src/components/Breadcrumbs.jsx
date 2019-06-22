@@ -6,6 +6,12 @@ function LabelItem ({title}) {
   )
 }
 
+function LinkItem ({path, title}) {
+  return (
+    <span> / <a href={path}>{title}</a></span>
+  )
+}
+
 function Breadcrumbs () {
   const location = document.location.pathname
   let items = location
@@ -26,7 +32,7 @@ function Breadcrumbs () {
     if (arr.length - 1 === i) {
       item.element = <LabelItem title={item.title}/>
     } else {
-      item.element = <span key={item.path}> / <a href={item.path}>{item.title}</a></span>
+      item.element = <LinkItem path={item.path} title={item.title}/>
     }
     return item
   })
