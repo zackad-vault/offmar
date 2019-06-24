@@ -3,8 +3,8 @@ import Breadcrumbs from './Breadcrumbs.jsx'
 
 function Image ({ src, alt }) {
   return (
-    <div className='block items-center' style={{lineHeight: 0}}>
-      <img src={src} alt={alt} />
+    <div>
+      <img className='mx-auto' src={src} alt={alt} />
     </div>
   )
 }
