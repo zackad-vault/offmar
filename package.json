@@ -46,7 +46,7 @@
     "postcss-discard-comments": "^4.0.2",
     "postcss-loader": "^3.0.0",
     "style-loader": "^0.23.1",
-    "tailwindcss": "^0.7.4",
+    "tailwindcss": "^1.0.4",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "userscript-metadata": "^1.0.0",
     "webpack": "^4.22.0",
