@@ -10,10 +10,17 @@ export default class Offmar extends React.Component {
     this.state = {
       mode: 'list',
       theme: 'theme-black',
+      themes: [
+        'theme-black',
+        'theme-dark',
+        'theme-gray',
+        'theme-light',
+      ],
       activeTheme: 0,
       directories: [],
       files: [],
       images: [],
+      config: {},
     }
 
     this.handleKeydown = this.handleKeydown.bind(this)
@@ -44,16 +51,19 @@ export default class Offmar extends React.Component {
     })
 
     document.addEventListener('keydown', this.handleKeydown)
+
+    if (localStorage.getItem('offmar')) {
+      let activeTheme = JSON.parse(localStorage.getItem('offmar')).activeTheme
+      this.setState({
+        theme: this.state.themes[activeTheme],
+        activeTheme: activeTheme
+      })
+    }
+
   }
 
   handleKeydown (event) {
     const keyCode = event.keyCode
-    const themes = [
-      'theme-black',
-      'theme-dark',
-      'theme-gray',
-      'theme-light',
-    ]
 
     switch(keyCode) {
       // 'Enter/Return' key
@@ -64,11 +74,15 @@ export default class Offmar extends React.Component {
         break
       // ';' (Semicolon)
       case 59:
-        const activeTheme = (this.state.activeTheme < themes.length - 1) ? this.state.activeTheme + 1 : 0
+        const activeTheme = (this.state.activeTheme < this.state.themes.length - 1) ? this.state.activeTheme + 1 : 0
         this.setState({
-          theme: themes[activeTheme],
-          activeTheme: activeTheme
+          theme: this.state.themes[activeTheme],
+          activeTheme: activeTheme,
+          config: Object.assign({}, {
+            activeTheme: activeTheme
+          })
         })
+        localStorage.setItem('offmar', JSON.stringify(this.state.config))
         break
       // '\' key
       case 220:
