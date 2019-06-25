@@ -52,14 +52,11 @@ export default class Offmar extends React.Component {
 
     document.addEventListener('keydown', this.handleKeydown)
 
-    if (localStorage.getItem('offmar')) {
-      let activeTheme = JSON.parse(localStorage.getItem('offmar')).activeTheme
-      this.setState({
-        theme: this.state.themes[activeTheme],
-        activeTheme: activeTheme
-      })
-    }
-
+    let activeTheme = GM_getValue('offmar:activeTheme', 0)
+    this.setState({
+      theme: this.state.themes[activeTheme],
+      activeTheme: activeTheme
+    })
   }
 
   handleKeydown (event) {
@@ -77,12 +74,9 @@ export default class Offmar extends React.Component {
         const activeTheme = (this.state.activeTheme < this.state.themes.length - 1) ? this.state.activeTheme + 1 : 0
         this.setState({
           theme: this.state.themes[activeTheme],
-          activeTheme: activeTheme,
-          config: Object.assign({}, {
-            activeTheme: activeTheme
-          })
+          activeTheme: activeTheme
         })
-        localStorage.setItem('offmar', JSON.stringify(this.state.config))
+        GM_setValue('offmar:activeTheme', activeTheme)
         break
       // '\' key
       case 220:

@@ -8,7 +8,12 @@
   "description": "Userscript for reading manga/view image locally in strip way.",
   "main": "ofmar.user.js",
   "runAt": "document-end",
-  "grant": [],
+  "grant": [
+    "GM_getValue",
+    "GM_setValue",
+    "GM.getValue",
+    "GM.setValue"
+  ],
   "include": [
     "file:///*"
   ],
