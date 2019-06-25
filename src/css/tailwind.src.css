@@ -3,3 +3,10 @@
 /* purgecss end ignore */
 @tailwind components;
 @tailwind utilities;
+
+.theme-black {
+  --bg-color-primary: #000000;
+  --bg-color-secondry: #333333;
+  --text-color-primary: #ffffff;
+  --text-color-secondary: #cccccc;
+}
