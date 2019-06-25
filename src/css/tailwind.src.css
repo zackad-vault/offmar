@@ -10,3 +10,19 @@
   --text-color-primary: #ffffff;
   --text-color-secondary: #cccccc;
 }
+
+.theme-dark {
+  --bg-color-primary: #1E2022;
+  --bg-color-secondry: #303438;
+  --text-color-primary: #ffffff;
+  --text-color-secondary: #cccccc;
+}
+
+.theme-gray {
+  --bg-color-primary: #B3BDD1;
+  --bg-color-secondary: #626D80;
+  --text-color-primary: #1E2022;
+  --text-color-secondary: #303438;
+}
+
+.theme-light {}
