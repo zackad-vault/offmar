@@ -1,9 +1,9 @@
 import React from 'preact'
 
-function ListItem ({ item }) {
+function ListItem ({ className, item }) {
   return (
     <p className='m-1 p-2 border-b'>
-      <a className='no-underline'
+      <a className={`${className} no-underline`}
         href={item.href}
         >
         {item.textContent}

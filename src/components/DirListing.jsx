@@ -9,7 +9,7 @@ function DirListing ({ directories, files }) {
       <div className='container mx-auto'>
         {
           directories
-            .map(item => <ListItem item={item} key={item.href}/>)
+            .map(item => <ListItem className='dir' item={item} key={item.href}/>)
         }
         {
           files

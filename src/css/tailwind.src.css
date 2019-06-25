@@ -26,3 +26,8 @@
 }
 
 .theme-light {}
+
+.dir::before {
+  content: url(chrome://global/skin/dirListing/folder.png);
+  margin-right: .5rem;
+}
