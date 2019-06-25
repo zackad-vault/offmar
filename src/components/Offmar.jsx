@@ -73,7 +73,7 @@ export default class Offmar extends React.Component {
     />
 
     return (
-      <div className={`${this.state.theme} min-h-screen`}>
+      <div className={`${this.state.theme} min-h-screen bg-primary text-primary`}>
         { (this.state.mode === 'list') ? list : reader }
       </div>
     )
