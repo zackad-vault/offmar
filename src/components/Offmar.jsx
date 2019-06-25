@@ -9,6 +9,7 @@ export default class Offmar extends React.Component {
 
     this.state = {
       mode: 'list',
+      theme: 'theme-black',
       directories: [],
       files: [],
       images: [],
@@ -63,7 +64,7 @@ export default class Offmar extends React.Component {
 
   render () {
     return (
-      <div className='bg-black text-white min-h-screen'>
+      <div className={`${this.state.theme} min-h-screen`}>
         {
           (this.state.mode === 'list') ?
             <DirListing
