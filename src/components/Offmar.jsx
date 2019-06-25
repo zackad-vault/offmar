@@ -63,18 +63,18 @@ export default class Offmar extends React.Component {
   }
 
   render () {
+    const list = <DirListing
+      directories={this.state.directories}
+      files={this.state.files}
+    />
+
+    const reader = <Reader
+      images={this.state.images}
+    />
+
     return (
       <div className={`${this.state.theme} min-h-screen`}>
-        {
-          (this.state.mode === 'list') ?
-            <DirListing
-              directories={this.state.directories}
-              files={this.state.files}
-            /> :
-            <Reader
-              images={this.state.images}
-            />
-        }
+        { (this.state.mode === 'list') ? list : reader }
       </div>
     )
   }
