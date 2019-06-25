@@ -20,7 +20,6 @@ export default class Offmar extends React.Component {
       directories: [],
       files: [],
       images: [],
-      config: {},
     }
 
     this.handleKeydown = this.handleKeydown.bind(this)
@@ -52,7 +51,7 @@ export default class Offmar extends React.Component {
 
     document.addEventListener('keydown', this.handleKeydown)
 
-    let activeTheme = GM_getValue('offmar:activeTheme', 0)
+    let activeTheme = GM_getValue('activeTheme', 0)
     this.setState({
       theme: this.state.themes[activeTheme],
       activeTheme: activeTheme
@@ -76,7 +75,7 @@ export default class Offmar extends React.Component {
           theme: this.state.themes[activeTheme],
           activeTheme: activeTheme
         })
-        GM_setValue('offmar:activeTheme', activeTheme)
+        GM_setValue('activeTheme', activeTheme)
         break
       // '\' key
       case 220:
