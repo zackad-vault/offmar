@@ -10,6 +10,7 @@ export default class Offmar extends React.Component {
     this.state = {
       mode: 'list',
       theme: 'theme-black',
+      activeTheme: 0,
       directories: [],
       files: [],
       images: [],
@@ -47,6 +48,12 @@ export default class Offmar extends React.Component {
 
   handleKeydown (event) {
     const keyCode = event.keyCode
+    const themes = [
+      'theme-black',
+      'theme-dark',
+      'theme-gray',
+      'theme-light',
+    ]
 
     switch(keyCode) {
       // 'Enter/Return' key
@@ -54,6 +61,14 @@ export default class Offmar extends React.Component {
         if (this.state.images.length > 0) {
           this.setState({mode: 'reader'})
         }
+        break
+      // ';' (Semicolon)
+      case 59:
+        const activeTheme = (this.state.activeTheme < themes.length - 1) ? this.state.activeTheme + 1 : 0
+        this.setState({
+          theme: themes[activeTheme],
+          activeTheme: activeTheme
+        })
         break
       // '\' key
       case 220:
