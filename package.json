@@ -4,7 +4,7 @@
   "namespace": "https://github.com/zackad",
   "updateURL": "https://github.com/zackad/offmar/releases/latest/download/Offline_Manga_Reader.user.js",
   "downloadURL": "https://github.com/zackad/offmar/releases/latest/download/Offline_Manga_Reader.user.js",
-  "version": "0.7.1",
+  "version": "0.8.1",
   "description": "Userscript for reading manga/view image locally in strip way.",
   "main": "ofmar.user.js",
   "runAt": "document-end",
