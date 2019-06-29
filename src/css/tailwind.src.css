@@ -25,7 +25,9 @@
   --text-color-secondary: #303438;
 }
 
-.theme-light {}
+.theme-light {
+  --bg-color-secondary: #ababab;
+}
 
 .dir::before {
   content: url(chrome://global/skin/dirListing/folder.png);
