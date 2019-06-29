@@ -14,7 +14,12 @@ function Reader ({ images }) {
     <div>
       <Breadcrumbs />
       <div>
-        {images.map((image, index) => <Image src={image} key={index} alt={image} first={ index === 0 ? true : false } />)}
+        {images.map((image, index) => {
+          return <Image src={image}
+            key={index}
+            alt={image}
+            first={ index === 0 ? true : false } />
+        })}
       </div>
     </div>
   )
