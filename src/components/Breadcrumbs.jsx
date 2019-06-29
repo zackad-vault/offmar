@@ -38,7 +38,7 @@ function Breadcrumbs () {
   })
 
   return (
-    <div className='p-2 border-b'>
+    <div className='p-2 border-b bg-secondary'>
       {breadcrumbs.map(item => item.element)}
     </div>
   )

@@ -6,14 +6,14 @@
 
 .theme-black {
   --bg-color-primary: #000000;
-  --bg-color-secondry: #333333;
+  --bg-color-secondary: #333333;
   --text-color-primary: #ffffff;
   --text-color-secondary: #cccccc;
 }
 
 .theme-dark {
   --bg-color-primary: #1E2022;
-  --bg-color-secondry: #303438;
+  --bg-color-secondary: #404448;
   --text-color-primary: #ffffff;
   --text-color-secondary: #cccccc;
 }
