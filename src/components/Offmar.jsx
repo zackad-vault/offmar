@@ -57,9 +57,11 @@ export default class Offmar extends React.Component {
     document.addEventListener('keydown', this.handleKeydown)
 
     let activeTheme = GM_getValue('activeTheme', 0)
+    let maxImageWidth = GM_getValue('maxImageWidth', null)
     this.setState({
       theme: this.state.themes[activeTheme],
       activeTheme: activeTheme,
+      maxImageWidth: maxImageWidth,
     })
   }
 
