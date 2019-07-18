@@ -18,7 +18,7 @@ export class SettingToggleButton extends React.Component {
     return (
       <div className={``}>
         <button onClick={this.buttonClickHandler}>Setting Button - {openSetting ? 'Open' : 'Close'}</button>
-        {openSetting ? <SettingDialog /> : ''}
+        {openSetting && <SettingDialog />}
       </div>
     )
   }
