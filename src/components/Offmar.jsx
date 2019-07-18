@@ -2,7 +2,7 @@ import React from 'preact'
 import natsort from 'natsort'
 import DirListing from './DirListing.jsx'
 import Reader from './Reader.jsx'
-import { SettingToggleButton } from './Settings.jsx'
+import { SettingToggleButton, SettingDialog } from './Settings.jsx'
 
 export default class Offmar extends React.Component {
   constructor(props) {
@@ -19,6 +19,7 @@ export default class Offmar extends React.Component {
       images: [],
     }
 
+    this.closeSettingDialog = this.closeSettingDialog.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
     this.settingToggleButtonHandler = this.settingToggleButtonHandler.bind(this)
   }
@@ -79,13 +80,22 @@ export default class Offmar extends React.Component {
     }
   }
 
+  closeSettingDialog() {
+    this.setState({ openSetting: false })
+  }
+
   settingToggleButtonHandler() {
     this.setState(prevState => ({ openSetting: !prevState.openSetting }))
   }
 
   render() {
+    const settingDialog = <SettingDialog discardHandler={this.closeSettingDialog} />
     const settingToggleButton = (
-      <SettingToggleButton openSetting={this.state.openSetting} onClickHandler={this.settingToggleButtonHandler} />
+      <SettingToggleButton
+        openSetting={this.state.openSetting}
+        settingDialog={settingDialog}
+        onClickHandler={this.settingToggleButtonHandler}
+      />
     )
     const list = (
       <DirListing directories={this.state.directories} files={this.state.files} settingButton={settingToggleButton} />
