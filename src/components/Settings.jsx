@@ -33,9 +33,8 @@ export function SettingDialog({ discardHandler, onChangeHandler, themes, current
       <h2 className={`font-medium text-lg border-b mb-3`}>Settings</h2>
       {themeSelector}
       <hr className={`border-b`} />
-      <button className={`button border py-1 px-2 ml-2 text-xs float-right`}>Save Settings</button>
       <button className={`button border py-1 px-2 text-xs float-right`} onClick={discardHandler}>
-        Discard Changes
+        Save Settings
       </button>
     </div>
   )
