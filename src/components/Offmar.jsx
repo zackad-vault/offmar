@@ -22,6 +22,7 @@ export default class Offmar extends React.Component {
     this.closeSettingDialog = this.closeSettingDialog.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
     this.settingToggleButtonHandler = this.settingToggleButtonHandler.bind(this)
+    this.onChangeThemeSelectorHandler = this.onChangeThemeSelectorHandler.bind(this)
   }
 
   componentDidMount() {
@@ -84,6 +85,10 @@ export default class Offmar extends React.Component {
     this.setState({ openSetting: false })
   }
 
+  onChangeThemeSelectorHandler(event) {
+    this.setState({ theme: event.target.value })
+  }
+
   settingToggleButtonHandler() {
     this.setState(prevState => ({ openSetting: !prevState.openSetting }))
   }
@@ -91,7 +96,12 @@ export default class Offmar extends React.Component {
   render() {
     const { openSetting, files, directories, images, mode, theme, themes } = this.state
     const settingDialog = (
-      <SettingDialog discardHandler={this.closeSettingDialog} themes={themes} currentTheme={theme} />
+      <SettingDialog
+        discardHandler={this.closeSettingDialog}
+        onChangeHandler={this.onChangeThemeSelectorHandler}
+        themes={themes}
+        currentTheme={theme}
+      />
     )
     const settingToggleButton = (
       <SettingToggleButton

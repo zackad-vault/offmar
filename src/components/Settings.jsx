@@ -10,11 +10,15 @@ export function SettingToggleButton() {
   )
 }
 
-export function SettingDialog({ discardHandler, themes, currentTheme }) {
+export function SettingDialog({ discardHandler, onChangeHandler, themes, currentTheme }) {
   const themeSelector = (
     <div>
       <label htmlFor='theme-selector'>Theme color</label>
-      <select name='theme-selector' className={`block w-full bg-primary text-primary border py-1 px-2 mt-2`}>
+      <select
+        name='theme-selector'
+        className={`block w-full bg-primary text-primary border py-1 px-2 mt-2`}
+        onChange={onChangeHandler}
+      >
         {themes.map((theme, index) => (
           <option key={index} value={theme} selected={theme === currentTheme ? true : false}>
             {theme}
