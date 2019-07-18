@@ -6,22 +6,23 @@ const package = require('./package.json')
 
 module.exports = {
   output: {
-    filename: `${package.longName.replace(/\s+/g, '_')}.user.js`
+    filename: `${package.longName.replace(/\s+/g, '_')}.user.js`,
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
         test: /.css$/,
-        use: ['style-loader', 'postcss-loader']
+        use: ['style-loader', 'postcss-loader'],
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
-      }
-    ]
+          loader: 'babel-loader',
+        },
+      },
+    ],
   },
   optimization: {
     minimizer: [
@@ -29,20 +30,20 @@ module.exports = {
         uglifyOptions: {
           output: {
             beautify: false,
-            preamble: Metadata.generate()
-          }
-        }
-      })
-    ]
+            preamble: Metadata.generate(),
+          },
+        },
+      }),
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
     }),
     new webpack.BannerPlugin({
       banner: Metadata.generate(),
       raw: true,
-      entryOnly: true
-    })
-  ]
+      entryOnly: true,
+    }),
+  ],
 }
