@@ -20,8 +20,8 @@ export function SettingDialog({ discardHandler, onChangeHandler, themes, current
         onChange={onChangeHandler}
       >
         {themes.map((theme, index) => (
-          <option key={index} value={theme} selected={theme === currentTheme ? true : false}>
-            {theme}
+          <option key={theme.name} value={index} selected={theme.name === currentTheme ? true : false}>
+            {theme.label}
           </option>
         ))}
       </select>

@@ -88,7 +88,7 @@ export default class Offmar extends React.Component {
   }
 
   onChangeThemeSelectorHandler(event) {
-    this.setState({ theme: event.target.value })
+    this.setState({ activeTheme: event.target.value })
   }
 
   settingToggleButtonHandler() {
