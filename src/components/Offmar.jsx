@@ -3,6 +3,7 @@ import natsort from 'natsort'
 import DirListing from './DirListing.jsx'
 import Reader from './Reader.jsx'
 import { SettingToggleButton, SettingDialog } from './Settings.jsx'
+import { getValue, setValue } from '../utils/GM_API_wrapper'
 
 export default class Offmar extends React.Component {
   constructor(props) {
@@ -48,10 +49,12 @@ export default class Offmar extends React.Component {
     const regexFilter = new RegExp('.jpe?g$|.png$|.gif$', 'i')
     const images = files.filter(image => image.href.match(regexFilter))
 
-    document.addEventListener('keydown', this.handleKeydown)
+    let activeTheme
+    let maxImageWidth
+    activeTheme = getValue('activeTheme', 0)
+    maxImageWidth = getValue('maxImageWidth', null)
 
-    let activeTheme = GM_getValue('activeTheme', 0)
-    let maxImageWidth = GM_getValue('maxImageWidth', null)
+    document.addEventListener('keydown', this.handleKeydown)
     this.setState({
       directories: directories,
       files: files,
@@ -93,7 +96,7 @@ export default class Offmar extends React.Component {
   onChangeThemeSelectorHandler(event) {
     const newActiveTheme = parseInt(event.target.value)
     this.setState({ activeTheme: newActiveTheme })
-    GM_setValue('activeTheme', newActiveTheme)
+    setValue('activeTheme', newActiveTheme)
   }
 
   onChangeMaxImageWidthHandler(event) {
@@ -101,12 +104,12 @@ export default class Offmar extends React.Component {
 
     if (!maxImageWidth) {
       this.setState({ maxImageWidth: null })
-      GM_setValue('maxImageWidth', null)
+      setValue('maxImageWidth', null)
       return
     }
 
     this.setState({ maxImageWidth: maxImageWidth })
-    GM_setValue('maxImageWidth', maxImageWidth)
+    setValue('maxImageWidth', maxImageWidth)
   }
 
   settingToggleButtonHandler() {
