@@ -9,11 +9,14 @@ function Image({ src, alt, first }) {
   )
 }
 
-function Reader({ images, settingButton }) {
+function Reader({ images, settingButton, maxImageWidth }) {
+  let width = !maxImageWidth ? `100%` : `${maxImageWidth}px`
+  document.documentElement.style.setProperty('--max-image-width', width)
+
   return (
     <div>
       <Breadcrumbs settingButton={settingButton} />
-      <div>
+      <div className={`max-image-width`}>
         {images.map((image, index) => {
           return <Image src={image} key={index} alt={image} first={index === 0 ? true : false} />
         })}

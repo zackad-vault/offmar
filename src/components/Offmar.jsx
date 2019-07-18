@@ -134,7 +134,7 @@ export default class Offmar extends React.Component {
       />
     )
     const list = <DirListing directories={directories} files={files} settingButton={settingToggleButton} />
-    const reader = <Reader images={images} settingButton={settingToggleButton} />
+    const reader = <Reader images={images} maxImageWidth={maxImageWidth} settingButton={settingToggleButton} />
 
     return (
       <div className={`${themes[activeTheme].name} min-h-screen bg-primary text-primary`}>

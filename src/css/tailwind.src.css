@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --max-image-width: 100%;
+}
+
+.max-image-width img {
+  max-width: var(--max-image-width);
+}
+
 .theme-black {
   --bg-color-primary: #000000;
   --bg-color-secondary: #333333;
@@ -12,16 +20,16 @@
 }
 
 .theme-dark {
-  --bg-color-primary: #1E2022;
+  --bg-color-primary: #1e2022;
   --bg-color-secondary: #404448;
   --text-color-primary: #ffffff;
   --text-color-secondary: #cccccc;
 }
 
 .theme-gray {
-  --bg-color-primary: #B3BDD1;
-  --bg-color-secondary: #626D80;
-  --text-color-primary: #1E2022;
+  --bg-color-primary: #b3bdd1;
+  --bg-color-secondary: #626d80;
+  --text-color-primary: #1e2022;
   --text-color-secondary: #303438;
 }
 
@@ -31,5 +39,5 @@
 
 .dir::before {
   content: url(chrome://global/skin/dirListing/folder.png);
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
