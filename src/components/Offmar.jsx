@@ -89,8 +89,10 @@ export default class Offmar extends React.Component {
   }
 
   render() {
-    const { openSetting, files, directories, images, mode, theme } = this.state
-    const settingDialog = <SettingDialog discardHandler={this.closeSettingDialog} />
+    const { openSetting, files, directories, images, mode, theme, themes } = this.state
+    const settingDialog = (
+      <SettingDialog discardHandler={this.closeSettingDialog} themes={themes} currentTheme={theme} />
+    )
     const settingToggleButton = (
       <SettingToggleButton
         openSetting={openSetting}
