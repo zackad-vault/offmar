@@ -45,10 +45,23 @@ export function SettingDialog({ discardHandler, onChangeHandler, themes, current
     </div>
   )
 
+  const imageWidthLimit = (
+    <div className={`mt-3`}>
+      <label htmlFor='max-image-width'>Maximum image width</label>
+      <input
+        type='number'
+        name='max-image-width'
+        className={`block w-full bg-primary border py-1 px-2`}
+        placeholder='Value in pixel (leave blank to default 100%)'
+      />
+    </div>
+  )
+
   return (
     <div className={`fixed top-12 inset-x-0 bg-secondary p-3 border mx-auto w-1/4`}>
       <h2 className={`font-medium text-lg border-b mb-3`}>Settings</h2>
       {themeSelector}
+      {imageWidthLimit}
       <hr className={`border-b`} />
       <button className={`button border py-1 px-2 text-xs float-right`} onClick={discardHandler}>
         Save Settings
