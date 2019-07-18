@@ -48,17 +48,14 @@ export default class Offmar extends React.Component {
     const regexFilter = new RegExp('.jpe?g$|.png$|.gif$', 'i')
     const images = files.filter(image => image.href.match(regexFilter))
 
-    this.setState({
-      directories: directories,
-      files: files,
-      images: images,
-    })
-
     document.addEventListener('keydown', this.handleKeydown)
 
     let activeTheme = GM_getValue('activeTheme', 0)
     let maxImageWidth = GM_getValue('maxImageWidth', null)
     this.setState({
+      directories: directories,
+      files: files,
+      images: images,
       theme: this.state.themes[activeTheme],
       activeTheme: activeTheme,
       maxImageWidth: maxImageWidth,
