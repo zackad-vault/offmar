@@ -17,6 +17,7 @@ export default class Offmar extends React.Component {
         { name: 'theme-gray', label: 'Gray' },
         { name: 'theme-light', label: 'Light' },
       ],
+      // Persist to userscript manager storage
       activeTheme: 0,
       directories: [],
       files: [],
@@ -88,7 +89,9 @@ export default class Offmar extends React.Component {
   }
 
   onChangeThemeSelectorHandler(event) {
-    this.setState({ activeTheme: parseInt(event.target.value) })
+    const newActiveTheme = parseInt(event.target.value)
+    this.setState({ activeTheme: newActiveTheme })
+    GM_setValue('activeTheme', newActiveTheme)
   }
 
   settingToggleButtonHandler() {
