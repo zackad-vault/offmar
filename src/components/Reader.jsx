@@ -1,7 +1,7 @@
 import React from 'preact'
 import Breadcrumbs from './Breadcrumbs.jsx'
 
-function Image ({ src, alt, first }) {
+function Image({ src, alt, first }) {
   return (
     <div className={!first ? `border-t` : ``}>
       <img className='mx-auto' src={src} alt={alt} />
@@ -9,16 +9,13 @@ function Image ({ src, alt, first }) {
   )
 }
 
-function Reader ({ images }) {
+function Reader({ images, settingButton }) {
   return (
     <div>
-      <Breadcrumbs />
+      <Breadcrumbs settingButton={settingButton} />
       <div>
         {images.map((image, index) => {
-          return <Image src={image}
-            key={index}
-            alt={image}
-            first={ index === 0 ? true : false } />
+          return <Image src={image} key={index} alt={image} first={index === 0 ? true : false} />
         })}
       </div>
     </div>

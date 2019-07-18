@@ -17,7 +17,7 @@ function LinkItem({ path, title }) {
   )
 }
 
-function Breadcrumbs() {
+function Breadcrumbs({ settingButton }) {
   const location = document.location.pathname
   let items = location.split('/').filter(item => item !== '')
 
@@ -44,7 +44,7 @@ function Breadcrumbs() {
     <div className='p-2 border-b bg-secondary flex'>
       {breadcrumbs.map(item => item.element)}
       <span className={`flex-grow`} />
-      <SettingToggleButton />
+      {settingButton}
     </div>
   )
 }

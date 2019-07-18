@@ -1,27 +1,13 @@
 import React from 'preact'
 
-export class SettingToggleButton extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      openSetting: false,
-    }
-    this.buttonClickHandler = this.buttonClickHandler.bind(this)
-  }
-
-  buttonClickHandler() {
-    this.setState(prevState => ({ openSetting: !prevState.openSetting }))
-  }
-
-  render() {
-    const { openSetting } = this.state
-    return (
-      <div className={``}>
-        <button onClick={this.buttonClickHandler}>Setting Button - {openSetting ? 'Open' : 'Close'}</button>
-        {openSetting && <SettingDialog />}
-      </div>
-    )
-  }
+export function SettingToggleButton() {
+  const { openSetting, onClickHandler } = this.props
+  return (
+    <div className={``}>
+      <button onClick={onClickHandler}>Setting Button - {openSetting ? 'Open' : 'Close'}</button>
+      {openSetting && <SettingDialog />}
+    </div>
+  )
 }
 
 export class SettingDialog extends React.Component {

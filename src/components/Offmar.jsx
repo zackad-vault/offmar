@@ -2,6 +2,7 @@ import React from 'preact'
 import natsort from 'natsort'
 import DirListing from './DirListing.jsx'
 import Reader from './Reader.jsx'
+import { SettingToggleButton } from './Settings.jsx'
 
 export default class Offmar extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class Offmar extends React.Component {
 
     this.state = {
       mode: 'list',
+      openSetting: false,
       theme: 'theme-black',
       themes: ['theme-black', 'theme-dark', 'theme-gray', 'theme-light'],
       activeTheme: 0,
@@ -18,6 +20,7 @@ export default class Offmar extends React.Component {
     }
 
     this.handleKeydown = this.handleKeydown.bind(this)
+    this.settingToggleButtonHandler = this.settingToggleButtonHandler.bind(this)
   }
 
   componentDidMount() {
@@ -76,10 +79,19 @@ export default class Offmar extends React.Component {
     }
   }
 
-  render() {
-    const list = <DirListing directories={this.state.directories} files={this.state.files} />
+  settingToggleButtonHandler() {
+    this.setState(prevState => ({ openSetting: !prevState.openSetting }))
+  }
 
-    const reader = <Reader images={this.state.images} />
+  render() {
+    const settingToggleButton = (
+      <SettingToggleButton openSetting={this.state.openSetting} onClickHandler={this.settingToggleButtonHandler} />
+    )
+    const list = (
+      <DirListing directories={this.state.directories} files={this.state.files} settingButton={settingToggleButton} />
+    )
+
+    const reader = <Reader images={this.state.images} settingButton={settingToggleButton} />
 
     return (
       <div className={`${this.state.theme} min-h-screen bg-primary text-primary`}>
