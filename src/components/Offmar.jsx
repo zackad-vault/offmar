@@ -89,24 +89,18 @@ export default class Offmar extends React.Component {
   }
 
   render() {
+    const { openSetting, files, directories, images, mode, theme } = this.state
     const settingDialog = <SettingDialog discardHandler={this.closeSettingDialog} />
     const settingToggleButton = (
       <SettingToggleButton
-        openSetting={this.state.openSetting}
+        openSetting={openSetting}
         settingDialog={settingDialog}
         onClickHandler={this.settingToggleButtonHandler}
       />
     )
-    const list = (
-      <DirListing directories={this.state.directories} files={this.state.files} settingButton={settingToggleButton} />
-    )
+    const list = <DirListing directories={directories} files={files} settingButton={settingToggleButton} />
+    const reader = <Reader images={images} settingButton={settingToggleButton} />
 
-    const reader = <Reader images={this.state.images} settingButton={settingToggleButton} />
-
-    return (
-      <div className={`${this.state.theme} min-h-screen bg-primary text-primary`}>
-        {this.state.mode === 'list' ? list : reader}
-      </div>
-    )
+    return <div className={`${theme} min-h-screen bg-primary text-primary`}>{mode === 'list' ? list : reader}</div>
   }
 }
