@@ -11,8 +11,12 @@ export default class Offmar extends React.Component {
     this.state = {
       mode: 'list',
       openSetting: false,
-      theme: 'theme-black',
-      themes: ['theme-black', 'theme-dark', 'theme-gray', 'theme-light'],
+      themes: [
+        { name: 'theme-black', label: 'Black' },
+        { name: 'theme-dark', label: 'Dark' },
+        { name: 'theme-gray', label: 'Gray' },
+        { name: 'theme-light', label: 'Light' },
+      ],
       activeTheme: 0,
       directories: [],
       files: [],
