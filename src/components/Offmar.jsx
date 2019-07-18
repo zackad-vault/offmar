@@ -60,6 +60,7 @@ export default class Offmar extends React.Component {
   }
 
   handleKeydown(event) {
+    const { activeTheme, themes } = this.state
     const keyCode = event.keyCode
 
     switch (keyCode) {
@@ -71,12 +72,9 @@ export default class Offmar extends React.Component {
         break
       // ';' (Semicolon)
       case 59:
-        const activeTheme = this.state.activeTheme < this.state.themes.length - 1 ? this.state.activeTheme + 1 : 0
-        this.setState({
-          theme: this.state.themes[activeTheme],
-          activeTheme: activeTheme,
-        })
-        GM_setValue('activeTheme', activeTheme)
+        const newActiveTheme = activeTheme < themes.length - 1 ? activeTheme + 1 : 0
+        this.setState({ activeTheme: newActiveTheme })
+        GM_setValue('activeTheme', newActiveTheme)
         break
       // '\' key
       case 220:
@@ -98,13 +96,13 @@ export default class Offmar extends React.Component {
   }
 
   render() {
-    const { openSetting, files, directories, images, mode, theme, themes } = this.state
+    const { openSetting, files, directories, images, mode, activeTheme, themes } = this.state
     const settingDialog = (
       <SettingDialog
         discardHandler={this.closeSettingDialog}
         onChangeHandler={this.onChangeThemeSelectorHandler}
         themes={themes}
-        currentTheme={theme}
+        currentTheme={themes[activeTheme].name}
       />
     )
     const settingToggleButton = (
@@ -117,6 +115,10 @@ export default class Offmar extends React.Component {
     const list = <DirListing directories={directories} files={files} settingButton={settingToggleButton} />
     const reader = <Reader images={images} settingButton={settingToggleButton} />
 
-    return <div className={`${theme} min-h-screen bg-primary text-primary`}>{mode === 'list' ? list : reader}</div>
+    return (
+      <div className={`${themes[activeTheme].name} min-h-screen bg-primary text-primary`}>
+        {mode === 'list' ? list : reader}
+      </div>
+    )
   }
 }
