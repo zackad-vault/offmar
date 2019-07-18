@@ -121,7 +121,7 @@ export default class Offmar extends React.Component {
     const settingDialog = (
       <SettingDialog
         discardHandler={this.closeSettingDialog}
-        onChangeHandler={this.onChangeThemeSelectorHandler}
+        themeChangeHandler={this.onChangeThemeSelectorHandler}
         maxImageChangeHandler={this.onChangeMaxImageWidthHandler}
         themes={themes}
         maxImageWidth={maxImageWidth}

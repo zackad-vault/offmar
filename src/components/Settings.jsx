@@ -29,7 +29,7 @@ export function SettingToggleButton() {
 
 export function SettingDialog({
   discardHandler,
-  onChangeHandler,
+  themeChangeHandler,
   maxImageChangeHandler,
   themes,
   currentTheme,
@@ -41,7 +41,7 @@ export function SettingDialog({
       <select
         name='theme-selector'
         className={`block w-full bg-primary text-primary border py-1 px-2 mt-2`}
-        onChange={onChangeHandler}
+        onChange={themeChangeHandler}
       >
         {themes.map((theme, index) => (
           <option key={theme.name} value={index} selected={theme.name === currentTheme ? true : false}>
