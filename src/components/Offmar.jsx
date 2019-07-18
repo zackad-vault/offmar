@@ -17,8 +17,10 @@ export default class Offmar extends React.Component {
         { name: 'theme-gray', label: 'Gray' },
         { name: 'theme-light', label: 'Light' },
       ],
-      // Persist to userscript manager storage
+      // Start of to persisted data into userscript manager storage
       activeTheme: 0,
+      maxImageWidth: null,
+      // End of to be persisted data
       directories: [],
       files: [],
       images: [],
@@ -28,6 +30,7 @@ export default class Offmar extends React.Component {
     this.handleKeydown = this.handleKeydown.bind(this)
     this.settingToggleButtonHandler = this.settingToggleButtonHandler.bind(this)
     this.onChangeThemeSelectorHandler = this.onChangeThemeSelectorHandler.bind(this)
+    this.onChangeMaxImageWidthHandler = this.onChangeMaxImageWidthHandler.bind(this)
   }
 
   componentDidMount() {
@@ -94,17 +97,32 @@ export default class Offmar extends React.Component {
     GM_setValue('activeTheme', newActiveTheme)
   }
 
+  onChangeMaxImageWidthHandler(event) {
+    const maxImageWidth = parseInt(event.target.value)
+
+    if (!maxImageWidth) {
+      this.setState({ maxImageWidth: null })
+      GM_setValue('maxImageWidth', null)
+      return
+    }
+
+    this.setState({ maxImageWidth: maxImageWidth })
+    GM_setValue('maxImageWidth', maxImageWidth)
+  }
+
   settingToggleButtonHandler() {
     this.setState(prevState => ({ openSetting: !prevState.openSetting }))
   }
 
   render() {
-    const { openSetting, files, directories, images, mode, activeTheme, themes } = this.state
+    const { openSetting, files, directories, images, mode, activeTheme, themes, maxImageWidth } = this.state
     const settingDialog = (
       <SettingDialog
         discardHandler={this.closeSettingDialog}
         onChangeHandler={this.onChangeThemeSelectorHandler}
+        maxImageChangeHandler={this.onChangeMaxImageWidthHandler}
         themes={themes}
+        maxImageWidth={maxImageWidth}
         currentTheme={themes[activeTheme].name}
       />
     )

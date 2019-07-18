@@ -27,7 +27,14 @@ export function SettingToggleButton() {
   )
 }
 
-export function SettingDialog({ discardHandler, onChangeHandler, themes, currentTheme }) {
+export function SettingDialog({
+  discardHandler,
+  onChangeHandler,
+  maxImageChangeHandler,
+  themes,
+  currentTheme,
+  maxImageWidth,
+}) {
   const themeSelector = (
     <div>
       <label htmlFor='theme-selector'>Theme color</label>
@@ -53,6 +60,8 @@ export function SettingDialog({ discardHandler, onChangeHandler, themes, current
         name='max-image-width'
         className={`block w-full bg-primary border py-1 px-2`}
         placeholder='Value in pixel (leave blank to default 100%)'
+        value={maxImageWidth && maxImageWidth}
+        onChange={maxImageChangeHandler}
       />
     </div>
   )
