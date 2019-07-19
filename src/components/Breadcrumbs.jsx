@@ -1,5 +1,4 @@
 import React from 'preact'
-import { SettingToggleButton } from './Settings.jsx'
 
 function LabelItem({ title }) {
   return <span className='text-secondary'> / {title}</span>
