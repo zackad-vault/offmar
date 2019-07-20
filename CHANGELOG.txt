@@ -1,0 +1,10 @@
+Offline Manga Reader
+https://gtihub.com/zackad/offmar
+
+Changelog:
+([!] Important, [+] Addition, [-] Removal, [*] Fix/Change, [?] Feedback needed)
+
+0.12.0 (2019-07-20)
+[+] Add feature to automatically hide breadcrumbs when scrolling down and reveal
+    it when scrolling up.
+Full change: https://github.com/zackad/offmar/compare/v0.11.0...v0.12.0
