@@ -1,4 +1,5 @@
 import React from 'preact'
+import { throttle } from '../utils/throttle'
 
 function LabelItem({ title }) {
   return <span className='text-secondary'> / {title}</span>
@@ -29,7 +30,7 @@ class Breadcrumbs extends React.Component {
     const breadcrumbsHeight = 40
     let pxTrigger = 0
 
-    document.addEventListener('scroll', () => {
+    const scrollHandler = () => {
       const pxFromTop = window.pageYOffset || window.scrollY
 
       if (pxFromTop > breadcrumbsHeight) {
@@ -38,7 +39,9 @@ class Breadcrumbs extends React.Component {
       } else {
         this.setState({ pinned: true })
       }
-    })
+    }
+
+    document.addEventListener('scroll', throttle(scrollHandler, 300))
   }
 
   render({ settingButton }) {
