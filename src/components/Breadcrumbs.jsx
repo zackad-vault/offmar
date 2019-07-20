@@ -68,7 +68,7 @@ class Breadcrumbs extends React.Component {
     const pinnedStyle = pinned ? 'mt-o' : '-mt-12'
 
     return (
-      <div className={`p-2 border-b bg-secondary flex fixed w-full ${pinnedStyle}`}>
+      <div className={`p-2 border-b bg-secondary flex fixed w-full ${pinnedStyle}`} style={{ transition: 'all 300ms' }}>
         {breadcrumbs.map(item => item.element)}
         <span className={`flex-grow`} />
         {settingButton}
