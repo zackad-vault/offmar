@@ -17,7 +17,32 @@ function LinkItem({ path, title }) {
 }
 
 class Breadcrumbs extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      pinned: true,
+    }
+  }
+
+  componentDidMount() {
+    const breadcrumbsHeight = 40
+    let pxTrigger = 0
+
+    document.addEventListener('scroll', () => {
+      const pxFromTop = window.pageYOffset || window.scrollY
+
+      if (pxFromTop > breadcrumbsHeight) {
+        this.setState({ pinned: pxFromTop < pxTrigger })
+        pxTrigger = pxFromTop
+      } else {
+        this.setState({ pinned: true })
+      }
+    })
+  }
+
   render({ settingButton }) {
+    const { pinned } = this.state
     const location = document.location.pathname
     let items = location.split('/').filter(item => item !== '')
 
@@ -40,8 +65,10 @@ class Breadcrumbs extends React.Component {
       return item
     })
 
+    const pinnedStyle = pinned ? 'mt-o' : '-mt-12'
+
     return (
-      <div className='p-2 border-b bg-secondary flex fixed w-full'>
+      <div className={`p-2 border-b bg-secondary flex fixed w-full ${pinnedStyle}`}>
         {breadcrumbs.map(item => item.element)}
         <span className={`flex-grow`} />
         {settingButton}
