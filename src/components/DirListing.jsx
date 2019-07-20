@@ -6,7 +6,7 @@ function DirListing({ directories, files, settingButton }) {
   return (
     <div>
       <Breadcrumbs settingButton={settingButton} />
-      <div className='container mx-auto'>
+      <div className='container mx-auto pt-12'>
         {directories.map(item => (
           <ListItem className='dir' item={item} key={item.href} />
         ))}

@@ -16,7 +16,7 @@ function Reader({ images, settingButton, maxImageWidth }) {
   return (
     <div>
       <Breadcrumbs settingButton={settingButton} />
-      <div className={`max-image-width`}>
+      <div className={`max-image-width pt-12`}>
         {images.map((image, index) => {
           return <Image src={image} key={index} alt={image} first={index === 0 ? true : false} />
         })}
