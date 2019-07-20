@@ -4,6 +4,7 @@ import DirListing from './DirListing.jsx'
 import Reader from './Reader.jsx'
 import { SettingToggleButton, SettingDialog } from './Settings.jsx'
 import { getValue, setValue } from '../utils/GM_API_wrapper'
+import Breadcrumbs from './Breadcrumbs.jsx'
 
 export default class Offmar extends React.Component {
   constructor(props) {
@@ -135,11 +136,12 @@ export default class Offmar extends React.Component {
         onClickHandler={this.settingToggleButtonHandler}
       />
     )
-    const list = <DirListing directories={directories} files={files} settingButton={settingToggleButton} />
-    const reader = <Reader images={images} maxImageWidth={maxImageWidth} settingButton={settingToggleButton} />
+    const list = <DirListing directories={directories} files={files} />
+    const reader = <Reader images={images} maxImageWidth={maxImageWidth} />
 
     return (
       <div className={`${themes[activeTheme].name} min-h-screen bg-primary text-primary`}>
+        <Breadcrumbs settingButton={settingToggleButton} />
         {mode === 'list' ? list : reader}
       </div>
     )

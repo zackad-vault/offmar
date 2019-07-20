@@ -1,5 +1,4 @@
 import React from 'preact'
-import Breadcrumbs from './Breadcrumbs.jsx'
 
 function Image({ src, alt, first }) {
   return (
@@ -9,13 +8,12 @@ function Image({ src, alt, first }) {
   )
 }
 
-function Reader({ images, settingButton, maxImageWidth }) {
+function Reader({ images, maxImageWidth }) {
   let width = !maxImageWidth ? `100%` : `${maxImageWidth}px`
   document.documentElement.style.setProperty('--max-image-width', width)
 
   return (
     <div>
-      <Breadcrumbs settingButton={settingButton} />
       <div className={`max-image-width pt-12`}>
         {images.map((image, index) => {
           return <Image src={image} key={index} alt={image} first={index === 0 ? true : false} />
