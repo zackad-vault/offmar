@@ -47,7 +47,7 @@ export default class Offmar extends React.Component {
 
     const files = items.filter(item => item.className === 'file')
 
-    const regexFilter = new RegExp('.jpe?g$|.png$|.gif$', 'i')
+    const regexFilter = new RegExp('.jpe?g$|.png$|.gif$|.webp$', 'i')
     const images = files.filter(image => image.href.match(regexFilter))
 
     let activeTheme
