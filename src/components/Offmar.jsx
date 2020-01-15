@@ -22,6 +22,7 @@ export default class Offmar extends React.Component {
       // Start of to persisted data into userscript manager storage
       activeTheme: 0,
       maxImageWidth: null,
+      borderImage: true,
       // End of to be persisted data
       directories: [],
       files: [],
@@ -52,8 +53,10 @@ export default class Offmar extends React.Component {
 
     let activeTheme
     let maxImageWidth
+    let borderImage
     activeTheme = getValue('activeTheme', 0)
     maxImageWidth = getValue('maxImageWidth', null)
+    borderImage = getValue('borderImage', true)
 
     document.addEventListener('keydown', this.handleKeydown)
     this.setState({
@@ -63,6 +66,7 @@ export default class Offmar extends React.Component {
       theme: this.state.themes[activeTheme],
       activeTheme: activeTheme,
       maxImageWidth: maxImageWidth,
+      borderImage: borderImage,
     })
   }
 
