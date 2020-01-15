@@ -66,11 +66,21 @@ export function SettingDialog({
     </div>
   )
 
+  const withBorderSetting = (
+    <div className='mt-3'>
+      <input type='checkbox' id='enable-image-border' className='inline-block' />
+      <label htmlFor='enable-image-border' className='ml-3'>
+        Enable Border Top of Image
+      </label>
+    </div>
+  )
+
   return (
     <div className={`fixed top-12 inset-x-0 bg-secondary p-3 border mx-auto w-1/4`}>
       <h2 className={`font-medium text-lg border-b mb-3`}>Settings</h2>
       {themeSelector}
       {imageWidthLimit}
+      {withBorderSetting}
       <hr className={`border-b`} />
       <button className={`button border py-1 px-2 text-xs float-right`} onClick={discardHandler}>
         Save Settings
