@@ -4,8 +4,13 @@ https://gtihub.com/zackad/offmar
 Changelog:
 ([!] Important, [+] Addition, [-] Removal, [*] Fix/Change, [?] Feedback needed)
 
+0.14.0 (2020-01-15)
+[+] Add setting to toggle border
+Full change: https://github.com/zackad/offmar/compare/v0.13.0...v0.14.0
+
 0.13.0 (2020-01-15)
 [*] Add support for webp image
+Full change: https://github.com/zackad/offmar/compare/v0.11.0...v0.12.0
 
 0.12.0 (2019-07-20)
 [+] Add feature to automatically hide breadcrumbs when scrolling down and reveal

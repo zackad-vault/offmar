@@ -34,6 +34,7 @@ export default class Offmar extends React.Component {
     this.settingToggleButtonHandler = this.settingToggleButtonHandler.bind(this)
     this.onChangeThemeSelectorHandler = this.onChangeThemeSelectorHandler.bind(this)
     this.onChangeMaxImageWidthHandler = this.onChangeMaxImageWidthHandler.bind(this)
+    this.borderStateChangeHandler = this.borderStateChangeHandler.bind(this)
   }
 
   componentDidMount() {
@@ -121,15 +122,31 @@ export default class Offmar extends React.Component {
     this.setState(prevState => ({ openSetting: !prevState.openSetting }))
   }
 
+  borderStateChangeHandler() {
+    this.setState(prevState => ({ borderImage: !prevState.borderImage }))
+  }
+
   render() {
-    const { openSetting, files, directories, images, mode, activeTheme, themes, maxImageWidth } = this.state
+    const {
+      openSetting,
+      files,
+      directories,
+      images,
+      mode,
+      activeTheme,
+      themes,
+      maxImageWidth,
+      borderImage,
+    } = this.state
     const settingDialog = (
       <SettingDialog
         discardHandler={this.closeSettingDialog}
         themeChangeHandler={this.onChangeThemeSelectorHandler}
         maxImageChangeHandler={this.onChangeMaxImageWidthHandler}
+        borderChangeHandler={this.borderStateChangeHandler}
         themes={themes}
         maxImageWidth={maxImageWidth}
+        borderImage={borderImage}
         currentTheme={themes[activeTheme].name}
       />
     )
@@ -141,7 +158,7 @@ export default class Offmar extends React.Component {
       />
     )
     const list = <DirListing directories={directories} files={files} />
-    const reader = <Reader images={images} maxImageWidth={maxImageWidth} />
+    const reader = <Reader images={images} maxImageWidth={maxImageWidth} borderImage={borderImage} />
 
     return (
       <div className={`${themes[activeTheme].name} min-h-screen bg-primary text-primary`}>

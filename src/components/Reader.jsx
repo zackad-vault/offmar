@@ -1,14 +1,14 @@
 import React from 'preact'
 
-function Image({ src, alt, first }) {
+function Image({ src, alt, borderImage }) {
   return (
-    <div className={!first ? `border-t` : ``}>
+    <div className={borderImage ? `border-t` : ``}>
       <img className='mx-auto' src={src} alt={alt} />
     </div>
   )
 }
 
-function Reader({ images, maxImageWidth }) {
+function Reader({ images, maxImageWidth, borderImage }) {
   let width = !maxImageWidth ? `100%` : `${maxImageWidth}px`
   document.documentElement.style.setProperty('--max-image-width', width)
 
@@ -16,7 +16,7 @@ function Reader({ images, maxImageWidth }) {
     <div>
       <div className={`max-image-width pt-12`}>
         {images.map((image, index) => {
-          return <Image src={image} key={index} alt={image} first={index === 0 ? true : false} />
+          return <Image src={image} key={index} alt={image} borderImage={borderImage} />
         })}
       </div>
     </div>

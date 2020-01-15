@@ -34,6 +34,8 @@ export function SettingDialog({
   themes,
   currentTheme,
   maxImageWidth,
+  borderImage,
+  borderChangeHandler,
 }) {
   const themeSelector = (
     <div>
@@ -68,7 +70,13 @@ export function SettingDialog({
 
   const withBorderSetting = (
     <div className='mt-3'>
-      <input type='checkbox' id='enable-image-border' className='inline-block' />
+      <input
+        type='checkbox'
+        id='enable-image-border'
+        className='inline-block'
+        checked={borderImage}
+        onChange={borderChangeHandler}
+      />
       <label htmlFor='enable-image-border' className='ml-3'>
         Enable Border Top of Image
       </label>
