@@ -14,16 +14,16 @@ let Metadata = {
   grant: pkg.grant,
   run_at: pkg.runAt,
   license: pkg.license,
-  copyright: `2015 - ${new Date().getFullYear()} (c) ${pkg.author}`
+  copyright: `2015 - ${new Date().getFullYear()} (c) ${pkg.author}`,
 }
 
 const validateCustom = Meta.validateAndStringifyWith({
   items: {
     ...Meta.DEFAULT_ITEMS,
     copyright: new Meta.StringItem({
-      key: 'copyright'
-    })
-  }
+      key: 'copyright',
+    }),
+  },
 })
 
 exports.generate = function() {
@@ -32,5 +32,5 @@ exports.generate = function() {
     return result.Right.stringified
   }
 
-  throw "Invalid metadata"
+  throw 'Invalid metadata'
 }
