@@ -8,7 +8,4 @@ const listItems = Prepare.getListItems()
 Prepare.cleanup()
 Prepare.insertRootContainer()
 
-render(
-  <Offmar listItems={listItems} />,
-  document.getElementById('root')
-)
+render(<Offmar listItems={listItems} />, document.getElementById('root'))
