@@ -1,4 +1,4 @@
-import React from 'preact'
+import { h } from 'preact'
 
 export function SettingToggleButton() {
   const { openSetting, settingDialog, onClickHandler } = this.props

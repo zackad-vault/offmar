@@ -1,4 +1,4 @@
-import React from 'preact'
+import { h, Component } from 'preact'
 import { throttle } from '../utils/throttle'
 
 function LabelItem({ title }) {
@@ -17,7 +17,7 @@ function LinkItem({ path, title }) {
   )
 }
 
-class Breadcrumbs extends React.Component {
+class Breadcrumbs extends Component {
   constructor(props) {
     super(props)
 

@@ -1,4 +1,4 @@
-import React from 'preact'
+import { h } from 'preact'
 import { ListItem } from './ListItem.jsx'
 
 function DirListing({ directories, files }) {

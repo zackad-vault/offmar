@@ -1,4 +1,4 @@
-import React from 'preact'
+import { h, Component } from 'preact'
 import natsort from 'natsort'
 import { DirListing } from './DirListing.jsx'
 import { Reader } from './Reader.jsx'
@@ -6,7 +6,7 @@ import { SettingToggleButton, SettingDialog } from './Settings.jsx'
 import { getValue, setValue } from '../utils/GM_API_wrapper'
 import { Breadcrumbs } from './Breadcrumbs.jsx'
 
-class Offmar extends React.Component {
+class Offmar extends Component {
   constructor(props) {
     super(props)
 

@@ -1,4 +1,4 @@
-import React from 'preact'
+import { h } from 'preact'
 
 function ListItem({ className, item }) {
   return (
