@@ -1,4 +1,4 @@
-import { render } from 'preact'
+import { h, render } from 'preact'
 import * as Prepare from './utils/prepare'
 import { Offmar } from './components/Offmar.jsx'
 import './css/tailwind.src.css'
