@@ -124,6 +124,7 @@ export default class Offmar extends React.Component {
 
   borderStateChangeHandler() {
     this.setState(prevState => ({ borderImage: !prevState.borderImage }))
+    setValue('borderImage', this.state.borderImage)
   }
 
   render() {

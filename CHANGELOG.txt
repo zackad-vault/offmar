@@ -4,6 +4,10 @@ https://gtihub.com/zackad/offmar
 Changelog:
 ([!] Important, [+] Addition, [-] Removal, [*] Fix/Change, [?] Feedback needed)
 
+0.14.1 (2020-01-19)
+[*] Fix persisting border image state
+Full change: https://github.com/zackad/offmar/compare/v0.14.0...v0.14.1
+
 0.14.0 (2020-01-15)
 [+] Add setting to toggle border
 Full change: https://github.com/zackad/offmar/compare/v0.13.0...v0.14.0
