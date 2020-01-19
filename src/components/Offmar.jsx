@@ -6,7 +6,7 @@ import { SettingToggleButton, SettingDialog } from './Settings.jsx'
 import { getValue, setValue } from '../utils/GM_API_wrapper'
 import Breadcrumbs from './Breadcrumbs.jsx'
 
-export default class Offmar extends React.Component {
+class Offmar extends React.Component {
   constructor(props) {
     super(props)
 
@@ -169,3 +169,5 @@ export default class Offmar extends React.Component {
     )
   }
 }
+
+export { Offmar }

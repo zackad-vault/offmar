@@ -16,4 +16,4 @@ function DirListing({ directories, files }) {
   )
 }
 
-export default DirListing
+export { DirListing }

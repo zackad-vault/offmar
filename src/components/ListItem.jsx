@@ -10,4 +10,4 @@ function ListItem({ className, item }) {
   )
 }
 
-export default ListItem
+export { ListItem }

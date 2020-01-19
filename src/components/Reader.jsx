@@ -23,4 +23,4 @@ function Reader({ images, maxImageWidth, borderImage }) {
   )
 }
 
-export default Reader
+export { Reader }
