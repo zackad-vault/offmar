@@ -1,4 +1,4 @@
-import React from 'preact'
+import { h } from 'preact'
 
 function Image({ src, alt, borderImage }) {
   return (
@@ -23,4 +23,4 @@ function Reader({ images, maxImageWidth, borderImage }) {
   )
 }
 
-export default Reader
+export { Reader }

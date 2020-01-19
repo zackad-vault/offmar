@@ -1,5 +1,5 @@
-import React from 'preact'
-import ListItem from './ListItem.jsx'
+import { h } from 'preact'
+import { ListItem } from './ListItem.jsx'
 
 function DirListing({ directories, files }) {
   return (
@@ -16,4 +16,4 @@ function DirListing({ directories, files }) {
   )
 }
 
-export default DirListing
+export { DirListing }
