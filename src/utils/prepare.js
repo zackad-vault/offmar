@@ -4,10 +4,9 @@ function cleanup() {
     'head > style:not(:last-child)',
     'head > link',
     'head > script',
-    'body > :not(script)'
+    'body > :not(script)',
   ]
-  document.querySelectorAll(cssSelector.join(','))
-    .forEach(element => element.parentNode.removeChild(element))
+  document.querySelectorAll(cssSelector.join(',')).forEach(element => element.parentNode.removeChild(element))
 }
 
 function getListItems() {
@@ -20,4 +19,4 @@ function insertRootContainer() {
   document.body.prepend(root)
 }
 
-export { cleanup, getListItems ,insertRootContainer }
+export { cleanup, getListItems, insertRootContainer }
