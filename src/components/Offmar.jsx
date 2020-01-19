@@ -1,10 +1,10 @@
 import React from 'preact'
 import natsort from 'natsort'
-import DirListing from './DirListing.jsx'
-import Reader from './Reader.jsx'
+import { DirListing } from './DirListing.jsx'
+import { Reader } from './Reader.jsx'
 import { SettingToggleButton, SettingDialog } from './Settings.jsx'
 import { getValue, setValue } from '../utils/GM_API_wrapper'
-import Breadcrumbs from './Breadcrumbs.jsx'
+import { Breadcrumbs } from './Breadcrumbs.jsx'
 
 class Offmar extends React.Component {
   constructor(props) {
