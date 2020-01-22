@@ -3,7 +3,9 @@ language: node_js
 node_js:
   - '8'
 
-script: yarn build
+script:
+  - yarn test
+  - yarn build
 
 deploy:
   provider: releases
