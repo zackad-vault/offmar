@@ -1,21 +1,7 @@
 import { h, Component } from 'preact'
+import { LabelItem } from './LabelItem'
+import { LinkItem } from './LinkItem'
 import { throttle } from '../utils/throttle'
-
-function LabelItem({ title }) {
-  return <span className='text-secondary'> / {title}</span>
-}
-
-function LinkItem({ path, title }) {
-  return (
-    <span>
-      {' '}
-      /{' '}
-      <a href={path} className='no-underline'>
-        {title}
-      </a>
-    </span>
-  )
-}
 
 class Breadcrumbs extends Component {
   constructor(props) {
