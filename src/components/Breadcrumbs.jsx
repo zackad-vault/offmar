@@ -1,6 +1,6 @@
 import { h, Component } from 'preact'
-import { LabelItem } from './LabelItem'
-import { LinkItem } from './LinkItem'
+import { LabelItem } from './LabelItem.jsx'
+import { LinkItem } from './LinkItem.jsx'
 import { throttle } from '../utils/throttle'
 
 class Breadcrumbs extends Component {
