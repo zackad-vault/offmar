@@ -1,12 +1,5 @@
 import { h } from 'preact'
-
-function Image({ src, alt, borderImage }) {
-  return (
-    <div className={borderImage ? `border-t` : ``}>
-      <img className='mx-auto' src={src} alt={alt} />
-    </div>
-  )
-}
+import { Image } from './Image.jsx'
 
 function Reader({ images, maxImageWidth, borderImage }) {
   let width = !maxImageWidth ? `100%` : `${maxImageWidth}px`
